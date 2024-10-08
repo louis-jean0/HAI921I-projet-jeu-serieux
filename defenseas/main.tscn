@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cc6l0oq0ahtug"]
+[gd_scene load_steps=6 format=3 uid="uid://cc6l0oq0ahtug"]
 
 [ext_resource type="PackedScene" uid="uid://bbskhekfyy48y" path="res://tile_map.tscn" id="1_3aprn"]
 [ext_resource type="Texture2D" uid="uid://jljkxbe2j4rn" path="res://Tilemap/tilesettest.png" id="2_o08b1"]
@@ -160,12 +160,6 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_osk8x")
 
-[sub_resource type="Curve2D" id="Curve2D_pprkg"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 778, 19, 0, 0, 0, 0, 778, 35, 0, 0, 0, 0, 778, 51, 0, 0, 0, 0, 778, 75, 0, 0, 0, 0, 778, 99, 0, 0, 0, 0, 778, 123, 0, 0, 0, 0, 778, 147, 0, 0, 0, 0, 778, 171, 0, 0, 0, 0, 778, 195, 0, 0, 0, 0, 778, 219, 0, 0, 0, 0, 778, 235, 0, 0, 0, 0, 778, 259, 0, 0, 0, 0, 778, 291, 0, 0, 0, 0, 778, 315, 0, 0, 0, 0, 778, 363, 0, 0, 0, 0, 778, 395, 0, 0, 0, 0, 778, 435, 0, 0, 0, 0, 770, 467, 0, 0, 0, 0, 746, 483, 0, 0, 0, 0, 706, 491, 0, 0, 0, 0, 666, 507, 0, 0, 0, 0, 618, 523, 0, 0, 0, 0, 578, 539, 0, 0, 0, 0, 554, 563, 0, 0, 0, 0, 546, 587, 0, 0, 0, 0, 538, 619, 0, 0, 0, 0, 530, 651, 0, 0, 0, 0, 530, 683, 0, 0, 0, 0, 530, 731, 0, 0, 0, 0, 522, 771, 0, 0, 0, 0, 522, 803, 0, 0, 0, 0, 522, 835)
-}
-point_count = 32
-
 [node name="Main" type="Node2D"]
 position = Vector2(-10, -3)
 
@@ -181,12 +175,5 @@ script = ExtResource("3_jcus7")
 [node name="Timer" type="Timer" parent="PathSpawner"]
 wait_time = 2.0
 autostart = true
-
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_pprkg")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(778, 19)
-rotation = 1.5708
 
 [connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]
