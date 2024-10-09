@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6ck75jqotewy"]
+[gd_scene load_steps=7 format=3 uid="uid://bpxbvar47ut1r"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0iety"]
 [ext_resource type="Texture2D" uid="uid://cmjwpcsvwhful" path="res://Background.png" id="2_v0xir"]
-[ext_resource type="Theme" uid="uid://bea54ul1vrj4i" path="res://themeVBox.tres" id="3_pj6vy"]
+[ext_resource type="Theme" path="res://themeVBox.tres" id="3_pj6vy"]
 [ext_resource type="Texture2D" uid="uid://8sp4aa3h2yut" path="res://logoDefenseasFinal.png" id="4_7c8dv"]
 
 [sub_resource type="Theme" id="Theme_p0og5"]

@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _on_lancer_partie_pressed() -> void:
-	get_tree().change_scene_to_file("res://tile_map.tscn")
+	get_tree().change_scene_to_file("res://main.tscn")
 
 
 func _on_options_pressed() -> void:
