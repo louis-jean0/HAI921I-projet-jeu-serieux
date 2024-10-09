@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://sokvxq1ri738"]
+
+[ext_resource type="PackedScene" uid="uid://2xhmkcl6lsx6" path="res://Solider_A.tscn" id="1_sy7nl"]
+
+[sub_resource type="Curve2D" id="Curve2D_kt4qv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 189, 31, 0, 0, 0, 0, 177, 77, 0, 0, 0, 0, 165, 115, 0, 0, 0, 0, 161, 154, 0, 0, 0, 0, 157, 202, 0, 0, 0, 0, 144, 251, 0, 0, 0, 0, 132, 318, 0, 0, 0, 0, 140, 389, 0, 0, 0, 0, 154, 440, 0, 0, 0, 0, 174, 486, 0, 0, 0, 0, 204, 522, 0, 0, 0, 0, 232, 564, 0, 0, 0, 0, 264, 612, 0, 0, 0, 0, 276, 660, 0, 0, 0, 0, 282, 707, 0, 0, 0, 0, 281, 773, 0, 0, 0, 0, 285, 832)
+}
+point_count = 17
+
+[node name="Path2D" type="Path2D"]
+position = Vector2(-10, -3)
+curve = SubResource("Curve2D_kt4qv")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(189, 31)
+rotation = 1.82598
+loop = false
+
+[node name="Solider_A" parent="PathFollow2D" instance=ExtResource("1_sy7nl")]
+position = Vector2(4.62773, 1.89316)
+rotation = -1.79594
+wall_min_slide_angle = 1.62665
