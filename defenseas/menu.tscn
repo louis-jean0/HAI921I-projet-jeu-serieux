@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0iety"]
 [ext_resource type="Texture2D" uid="uid://cmjwpcsvwhful" path="res://Background.png" id="2_v0xir"]
-[ext_resource type="Theme" path="res://themeVBox.tres" id="3_pj6vy"]
+[ext_resource type="Theme" uid="uid://bpcn2rq4vqflr" path="res://themeVBox.tres" id="3_pj6vy"]
 [ext_resource type="Texture2D" uid="uid://8sp4aa3h2yut" path="res://logoDefenseasFinal.png" id="4_7c8dv"]
 
 [sub_resource type="Theme" id="Theme_p0og5"]
@@ -81,7 +81,7 @@ position = Vector2(385, -215)
 scale = Vector2(0.590909, 0.527559)
 texture = ExtResource("4_7c8dv")
 
-[connection signal="pressed" from="VBoxContainer/LancerPartie" to="." method="_on_lancer_partie_pressed"]
 [connection signal="pressed" from="VBoxContainer/LancerPartie" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/LancerPartie" to="." method="_on_lancer_partie_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Fermer" to="." method="_on_fermer_pressed"]

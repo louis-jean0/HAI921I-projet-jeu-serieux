@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cc6l0oq0ahtug"]
+[gd_scene load_steps=7 format=3 uid="uid://cc6l0oq0ahtug"]
 
 [ext_resource type="PackedScene" uid="uid://bbskhekfyy48y" path="res://tile_map.tscn" id="1_3aprn"]
 [ext_resource type="Texture2D" uid="uid://jljkxbe2j4rn" path="res://Tilemap/tilesettest.png" id="2_o08b1"]
 [ext_resource type="Script" path="res://path_spawner.gd" id="3_jcus7"]
-[ext_resource type="PackedScene" uid="uid://5npqk2ej5rij" path="res://Towers/first_tower.tscn" id="2_ql5um"]
-
+[ext_resource type="PackedScene" uid="uid://5npqk2ej5rij" path="res://Towers/first_tower.tscn" id="4_oxbvi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_osk8x"]
 texture = ExtResource("2_o08b1")
@@ -180,6 +179,7 @@ autostart = true
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="FirstTower" parent="Node2D" instance=ExtResource("2_ql5um")]
+[node name="FirstTower" parent="Node2D" instance=ExtResource("4_oxbvi")]
+position = Vector2(266, 259)
 
 [connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]
