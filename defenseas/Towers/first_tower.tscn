@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://5npqk2ej5rij"]
+
+[ext_resource type="Script" path="res://Towers/FirstTower.gd" id="1_swl3s"]
+[ext_resource type="Texture2D" uid="uid://bjbnm6d8vs7li" path="res://tower.png" id="2_fi5mu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_saje1"]
+size = Vector2(550, 750)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ikugf"]
+radius = 2221.1
+
+[node name="FirstTower" type="StaticBody2D"]
+script = ExtResource("1_swl3s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9.5, -2.98023e-08)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_saje1")
+
+[node name="TowerSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_fi5mu")
+
+[node name="Aim" type="Marker2D" parent="."]
+position = Vector2(-27, 5)
+scale = Vector2(0.1, 0.1)
+
+[node name="Tower" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower"]
+position = Vector2(1.35525e-20, 0)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_ikugf")
+
+[node name="PinceContainer" type="Node" parent="."]
+
+[connection signal="body_entered" from="Tower" to="." method="_on_tower_body_entered"]
+[connection signal="body_exited" from="Tower" to="." method="_on_tower_body_exited"]
