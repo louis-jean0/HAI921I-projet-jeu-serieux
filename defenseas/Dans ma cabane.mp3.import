@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjf5t71kewye7"
+path="res://.godot/imported/Dans ma cabane.mp3-fca071acc962cfd7f1dd747c809932ff.mp3str"
+
+[deps]
+
+source_file="res://Dans ma cabane.mp3"
+dest_files=["res://.godot/imported/Dans ma cabane.mp3-fca071acc962cfd7f1dd747c809932ff.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

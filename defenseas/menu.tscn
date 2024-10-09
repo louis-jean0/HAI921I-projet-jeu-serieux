@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpxbvar47ut1r"]
+[gd_scene load_steps=11 format=3 uid="uid://bpxbvar47ut1r"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0iety"]
 [ext_resource type="Texture2D" uid="uid://cmjwpcsvwhful" path="res://Background.png" id="2_v0xir"]
+[ext_resource type="FontFile" uid="uid://bseuw8p8p8v8o" path="res://Fontspring-DEMO-ccoverbyteoff-regular.otf" id="3_3ybgv"]
 [ext_resource type="Theme" uid="uid://bpcn2rq4vqflr" path="res://themeVBox.tres" id="3_pj6vy"]
 [ext_resource type="Texture2D" uid="uid://8sp4aa3h2yut" path="res://logoDefenseasFinal.png" id="4_7c8dv"]
+[ext_resource type="AudioStream" uid="uid://cjf5t71kewye7" path="res://Dans ma cabane.mp3" id="6_ebhw6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iahyf"]
+
+[sub_resource type="Theme" id="Theme_1n3sh"]
 
 [sub_resource type="Theme" id="Theme_p0og5"]
 
@@ -27,14 +33,68 @@ position = Vector2(482, 512)
 scale = Vector2(0.972222, 0.963889)
 texture = ExtResource("2_v0xir")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="BoxOptions" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 333.0
+offset_top = 515.0
+offset_right = 375.0
+offset_bottom = 1115.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+
+[node name="Label" type="Label" parent="BoxOptions"]
+self_modulate = Color(0.0196078, 0.772549, 1, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_constants/line_spacing = 10
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("3_3ybgv")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_iahyf")
+text = "Volume"
+
+[node name="Volume" type="HSlider" parent="BoxOptions/Label"]
+modulate = Color(0.779277, 0.64299, 0.238795, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+offset_left = -138.0
+offset_top = 14.0
+offset_right = 9.0
+offset_bottom = 79.0
+scale = Vector2(3, 3)
+theme = SubResource("Theme_1n3sh")
+value = 20.0
+
+[node name="FermerMenu" type="Button" parent="BoxOptions"]
+modulate = Color(0.0196078, 0.772549, 1, 1)
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../LancerPartie")
+theme = ExtResource("3_pj6vy")
+theme_override_constants/outline_size = 10
+text = "Quitter
+"
+
+[node name="BoxMenu" type="VBoxContainer" parent="."]
 self_modulate = Color(0.548026, 0.337767, 9.62615e-08, 1)
 layout_direction = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 4.289
 anchor_top = 2.742
-anchor_right = 4.289
+anchor_right = 4.414
 anchor_bottom = 2.742
 offset_left = -1172.83
 offset_top = 211.444
@@ -43,7 +103,7 @@ offset_bottom = 707.444
 theme = ExtResource("3_pj6vy")
 theme_override_constants/separation = 20
 
-[node name="LancerPartie" type="Button" parent="VBoxContainer"]
+[node name="LancerPartie" type="Button" parent="BoxMenu"]
 modulate = Color(0.02, 0.771334, 1, 1)
 z_index = 1
 custom_minimum_size = Vector2(20, 0)
@@ -59,7 +119,7 @@ theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
 text = "Lancer une partie"
 
-[node name="Options" type="Button" parent="VBoxContainer"]
+[node name="Options" type="Button" parent="BoxMenu"]
 modulate = Color(0.0196078, 0.772549, 1, 1)
 layout_mode = 2
 theme = SubResource("Theme_knox6")
@@ -68,7 +128,7 @@ theme_override_constants/outline_size = 10
 text = "Options
 "
 
-[node name="Fermer" type="Button" parent="VBoxContainer"]
+[node name="Fermer" type="Button" parent="BoxMenu"]
 modulate = Color(0.0196078, 0.772549, 1, 1)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../LancerPartie")
@@ -76,12 +136,19 @@ theme_override_constants/outline_size = 10
 text = "Quitter
 "
 
-[node name="LogoDefenseasFinal" type="Sprite2D" parent="VBoxContainer"]
+[node name="LogoDefenseasFinal" type="Sprite2D" parent="BoxMenu"]
 position = Vector2(385, -215)
 scale = Vector2(0.590909, 0.527559)
 texture = ExtResource("4_7c8dv")
 
-[connection signal="pressed" from="VBoxContainer/LancerPartie" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/LancerPartie" to="." method="_on_lancer_partie_pressed"]
-[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="VBoxContainer/Fermer" to="." method="_on_fermer_pressed"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ebhw6")
+autoplay = true
+parameters/looping = true
+
+[connection signal="value_changed" from="BoxOptions/Label/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="pressed" from="BoxOptions/FermerMenu" to="." method="_on_fermer_menu_pressed"]
+[connection signal="pressed" from="BoxMenu/LancerPartie" to="." method="_on_lancer_partie_pressed"]
+[connection signal="pressed" from="BoxMenu/LancerPartie" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BoxMenu/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="BoxMenu/Fermer" to="." method="_on_fermer_pressed"]
