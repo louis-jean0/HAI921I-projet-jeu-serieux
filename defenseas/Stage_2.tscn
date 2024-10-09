@@ -1,25 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://df8ktat4xgxtr"]
+[gd_scene load_steps=3 format=3 uid="uid://df8ktat4xgxtr"]
 
 [ext_resource type="PackedScene" uid="uid://2xhmkcl6lsx6" path="res://Solider_A.tscn" id="1_hr5gc"]
 
 [sub_resource type="Curve2D" id="Curve2D_t1b4k"]
-
-[sub_resource type="Curve2D" id="Curve2D_pprkg"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 778, 19, 0, 0, 0, 0, 778, 35, 0, 0, 0, 0, 778, 51, 0, 0, 0, 0, 778, 75, 0, 0, 0, 0, 778, 99, 0, 0, 0, 0, 778, 123, 0, 0, 0, 0, 778, 147, 0, 0, 0, 0, 778, 171, 0, 0, 0, 0, 778, 195, 0, 0, 0, 0, 778, 219, 0, 0, 0, 0, 778, 235, 0, 0, 0, 0, 778, 259, 0, 0, 0, 0, 778, 291, 0, 0, 0, 0, 778, 315, 0, 0, 0, 0, 778, 363, 0, 0, 0, 0, 778, 395, 0, 0, 0, 0, 778, 435, 0, 0, 0, 0, 770, 467, 0, 0, 0, 0, 746, 483, 0, 0, 0, 0, 706, 491, 0, 0, 0, 0, 666, 507, 0, 0, 0, 0, 618, 523, 0, 0, 0, 0, 578, 539, 0, 0, 0, 0, 554, 563, 0, 0, 0, 0, 546, 587, 0, 0, 0, 0, 538, 619, 0, 0, 0, 0, 530, 651, 0, 0, 0, 0, 530, 683, 0, 0, 0, 0, 530, 731, 0, 0, 0, 0, 522, 771, 0, 0, 0, 0, 522, 803, 0, 0, 0, 0, 522, 835)
+"points": PackedVector2Array(0, 0, 0, 0, 784, 11, 0, 0, 0, 0, 786, 35, 0, 0, 0, 0, 786, 59, 0, 0, 0, 0, 786, 90, 0, 0, 0, 0, 787, 122, 0, 0, 0, 0, 785, 154, 0, 0, 0, 0, 785, 188, 0, 0, 0, 0, 787, 218, 0, 0, 0, 0, 785, 259, 0, 0, 0, 0, 786, 295, 0, 0, 0, 0, 786, 340, 0, 0, 0, 0, 789, 383, 0, 0, 0, 0, 782, 427, 0, 0, 0, 0, 763, 467, 0, 0, 0, 0, 734, 490, 0, 0, 0, 0, 695, 517, 0, 0, 0, 0, 663, 541, 0, 0, 0, 0, 645, 578, 0, 0, 0, 0, 632, 626, 0, 0, 0, 0, 622, 672, 0, 0, 0, 0, 618, 712, 0, 0, 0, 0, 615, 759, 0, 0, 0, 0, 609, 805)
 }
-point_count = 32
+point_count = 23
 
 [node name="Path2D" type="Path2D"]
 curve = SubResource("Curve2D_t1b4k")
 
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2(-10, -3)
-curve = SubResource("Curve2D_pprkg")
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(784, 11)
+rotation = 1.48766
+loop = false
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(778, 19)
-rotation = 1.5708
-
-[node name="Solider_A" parent="Path2D/PathFollow2D" instance=ExtResource("1_hr5gc")]
+[node name="Solider_A" parent="PathFollow2D" instance=ExtResource("1_hr5gc")]
 rotation = -1.5708
