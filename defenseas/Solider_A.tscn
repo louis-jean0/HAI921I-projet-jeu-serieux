@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://2xhmkcl6lsx6"]
+
+[ext_resource type="Script" path="res://solider_a.gd" id="1_cpmdb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vrthc"]
+radius = 22.0
+
+[node name="Solider_A" type="CharacterBody2D"]
+script = ExtResource("1_cpmdb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.4, 0.650002)
+shape = SubResource("CircleShape2D_vrthc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
