@@ -5,13 +5,13 @@
 
 [node name="Tower_1_panel" type="Panel"]
 custom_minimum_size = Vector2(80, 100)
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 80.0
+offset_bottom = 100.0
 script = ExtResource("1_ywng0")
 
 [node name="Tower" type="Sprite2D" parent="."]
-position = Vector2(50, 50)
-scale = Vector2(0.1, 0.1)
+position = Vector2(51.4, 50)
+scale = Vector2(0.102734, 0.1)
 texture = ExtResource("2_avkha")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
