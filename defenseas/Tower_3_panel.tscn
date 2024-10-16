@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbwvyn1vbcvg6"]
+
+[ext_resource type="Texture2D" uid="uid://bf445bo2ouo5g" path="res://Turbine2.png" id="1_41xbo"]
+
+[node name="Tower_3_panel" type="Panel"]
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="Turbine2" type="Sprite2D" parent="."]
+position = Vector2(64, 64)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_41xbo")
