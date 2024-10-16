@@ -1,0 +1,15 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1729077100
+background.png::CompressedTexture2D::4561979429165053126::1729070371::1729070376::1::::<><>::
+boatLeft.png::CompressedTexture2D::1629377529001763686::1729071312::1729072385::1::::<><>::
+boatRight.png::CompressedTexture2D::7793932668650756462::1729072382::1729072385::1::::<><>::
+grab.png::CompressedTexture2D::31779574573390242::1729074004::1729074023::1::::<><>::
+icon.svg::CompressedTexture2D::5404482193104704331::1728468556::1728468562::1::::<><>::
+node_2d.gd::GDScript::-1::1728468881::0::1::::<>Node2D<>::
+node_2d.tscn::PackedScene::4036669147072325957::1729077039::0::1::::<><>::uid://b584etxwfs78e::::res://background.png<>res://waste_grid.gd<>res://player_boat.gd<>uid://xhjuy8plk14e::::res://boatLeft.png<>uid://djbo6x15ahl7k::::res://boatRight.png<>uid://pnn1efqwspm::::res://grab.png<>uid://c0ptj1qofsy45::::res://open.png
+open.png::CompressedTexture2D::6559699210623103480::1729073980::1729074023::1::::<><>::
+player_boat.gd::GDScript::-1::1729077039::0::1::::<>Node2D<>::
+waste1.png::CompressedTexture2D::6478663447980145385::1728462789::1728469555::1::::<><>::
+waste2.png::CompressedTexture2D::5306475712828782710::1728462815::1728469555::1::::<><>::
+waste3.png::CompressedTexture2D::2749576021792110586::1728462848::1728469555::1::::<><>::
+waste_grid.gd::GDScript::-1::1729074809::0::1::::<>GridContainer<>::

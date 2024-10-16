@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://bxrnl64e6e78t"]
+
+[ext_resource type="Texture2D" uid="uid://b584etxwfs78e" path="res://background.png" id="1_xwpu7"]
+[ext_resource type="Script" path="res://waste_grid.gd" id="3_6aklu"]
+[ext_resource type="Script" path="res://player_boat.gd" id="3_c8ab2"]
+[ext_resource type="Texture2D" uid="uid://xhjuy8plk14e" path="res://boatLeft.png" id="4_tuq41"]
+[ext_resource type="Texture2D" uid="uid://djbo6x15ahl7k" path="res://boatRight.png" id="5_q1ubw"]
+[ext_resource type="Texture2D" uid="uid://pnn1efqwspm" path="res://grab.png" id="6_aood4"]
+[ext_resource type="Texture2D" uid="uid://c0ptj1qofsy45" path="res://open.png" id="7_1t640"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b311d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tuq41")
+}],
+"loop": true,
+"name": &"goLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_q1ubw")
+}],
+"loop": true,
+"name": &"goRight",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2puh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_aood4")
+}],
+"loop": true,
+"name": &"closeGrap",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_1t640")
+}],
+"loop": true,
+"name": &"openGrap",
+"speed": 5.0
+}]
+
+[node name="World" type="Node2D"]
+
+[node name="background" type="TextureRect" parent="."]
+offset_left = -14.0
+offset_top = -12.0
+offset_right = 1673.0
+offset_bottom = 1488.0
+texture = ExtResource("1_xwpu7")
+
+[node name="wasteGrid" type="GridContainer" parent="."]
+offset_left = 258.0
+offset_top = 734.0
+offset_right = 1359.0
+offset_bottom = 1451.0
+columns = 10
+script = ExtResource("3_6aklu")
+
+[node name="PlayerBoat" type="Node2D" parent="."]
+script = ExtResource("3_c8ab2")
+
+[node name="boat" type="AnimatedSprite2D" parent="PlayerBoat"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_b311d")
+animation = &"goLeft"
+
+[node name="grap" type="AnimatedSprite2D" parent="PlayerBoat/boat"]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_r2puh")
+animation = &"closeGrap"
