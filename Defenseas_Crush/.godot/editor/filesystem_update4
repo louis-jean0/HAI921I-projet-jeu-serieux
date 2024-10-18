@@ -1,2 +1,3 @@
-res://node_2d.tscn
+res://player_boat.gd
 res://waste_grid.gd
+res://node_2d.tscn
