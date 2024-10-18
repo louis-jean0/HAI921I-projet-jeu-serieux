@@ -29,7 +29,7 @@ grow_vertical = 2
 script = ExtResource("1_0iety")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(482, 512)
+position = Vector2(753, 512)
 scale = Vector2(0.972222, 0.963889)
 texture = ExtResource("2_v0xir")
 
@@ -96,10 +96,10 @@ anchor_left = 4.289
 anchor_top = 2.742
 anchor_right = 4.414
 anchor_bottom = 2.742
-offset_left = -1172.83
-offset_top = 211.444
-offset_right = -405.833
-offset_bottom = 707.444
+offset_left = -2979.4
+offset_top = 175.444
+offset_right = -2212.4
+offset_bottom = 671.444
 theme = ExtResource("3_pj6vy")
 theme_override_constants/separation = 20
 
@@ -137,7 +137,7 @@ text = "Quitter
 "
 
 [node name="LogoDefenseasFinal" type="Sprite2D" parent="BoxMenu"]
-position = Vector2(385, -215)
+position = Vector2(431.003, -221)
 scale = Vector2(0.590909, 0.527559)
 texture = ExtResource("4_7c8dv")
 
@@ -148,7 +148,7 @@ parameters/looping = true
 
 [connection signal="value_changed" from="BoxOptions/Label/Volume" to="." method="_on_volume_value_changed"]
 [connection signal="pressed" from="BoxOptions/FermerMenu" to="." method="_on_fermer_menu_pressed"]
-[connection signal="pressed" from="BoxMenu/LancerPartie" to="." method="_on_lancer_partie_pressed"]
 [connection signal="pressed" from="BoxMenu/LancerPartie" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BoxMenu/LancerPartie" to="." method="_on_lancer_partie_pressed"]
 [connection signal="pressed" from="BoxMenu/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="BoxMenu/Fermer" to="." method="_on_fermer_pressed"]
