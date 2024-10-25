@@ -40,8 +40,8 @@ func spawn_new_object():
 func checkAt(aimX,aimY):
 	for child in self.get_children():
 		if child is Sprite2D:
-			#if child.position.x + gridPosition.x < aimX and aimX < child.position.x + gridPosition.x + cell_size.x: # Bien prendre en compte les coordonnées monde des cellules (et pas par rapport à la grille)
+			if child.position.x + gridPosition.x < aimX and aimX < child.position.x + gridPosition.x + cell_size.x: # Bien prendre en compte les coordonnées monde des cellules (et pas par rapport à la grille)
 				if child.position.y + gridPosition.y < aimY and aimY < child.position.y + gridPosition.y + cell_size.y   :
-					print("oui")
+					self.remove_child(child)
 	return -1
 	
