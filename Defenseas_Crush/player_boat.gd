@@ -4,7 +4,7 @@ extends Node2D
 var boat
 var pince
 var cosCount = 0
-var rangeYMove = 13
+var rangeYMove = 8
 var initialYBoat = 580
 var pinceY = 0
 var boatLook = 1 # 1 pour left, -1 pour right (permet de bien positionner la pince)
@@ -15,6 +15,8 @@ var isHoldingWaste = false
 var fallingWaste = []
 var fallingSpeed = 5
 var window_size
+var pinceSpeed = 5
+var yLimit = 340
 
 var stringColor = Color(55,55,55)
 var texture_paths = [preload("res://waste1.png"), preload("res://waste2.png"), preload("res://waste3.png")]
@@ -47,7 +49,7 @@ func _draw():
 	draw_line(Vector2(boat.position.x + pince.position.x + grabTexture.get_size().x * scaleX/1.5 * boatLook, boat.position.y - 50), Vector2(boat.position.x + pince.position.x + grabTexture.get_size().x * scaleX/1.5 * boatLook, boat.position.y + pince.position.y*2), Color.DARK_SLATE_GRAY, 10.0)
 
 	# Dessine un point là où vise la pince
-	# draw_circle(Vector2i(boat.position.x + pince.position.x + grabTexture.get_size().x * scaleX/1.5 * boatLook, boat.position.y + pince.position.y*2 + grabTexture.get_size().y*scaleY), 9.3905, Color.DARK_RED)
+	#draw_circle(Vector2i( boat.position.x + pince.position.x + grabTexture.get_size().x * scaleX/1.5 * boatLook + 10*boatLook, boat.position.y + pince.position.y*2 + grabTexture.get_size().y*scaleY), 10, Color.DARK_RED)
 
 func deleteSprite2D(wasteToDelete):
 	wasteToDelete.queue_free() # Supprime le noeud de la scène
@@ -61,7 +63,7 @@ func _process(delta):
 		velocity.x -= 1
 	if Input.is_action_just_pressed("grabAction"):
 		pince.animation = "closeGrap"
-		typeWasteHold = wasteGrid.checkAt(true, boat.position.x + pince.position.x + grabTexture.get_size().x * scaleX/1.5 * boatLook + 10, boat.position.y + pince.position.y*2 + grabTexture.get_size().y*scaleY)
+		typeWasteHold = wasteGrid.checkAt(true, boat.position.x + pince.position.x + grabTexture.get_size().x * scaleX/1.5 * boatLook + 10*boatLook, boat.position.y + pince.position.y*2 + grabTexture.get_size().y*scaleY)
 		if typeWasteHold != -1:
 			isHoldingWaste = true
 			holdingWaste = Sprite2D.new()
@@ -79,13 +81,17 @@ func _process(delta):
 			deleteSprite2D(holdingWaste)
 		
 	if Input.is_action_pressed("downPince"):
-		if pinceY < 350:
+		if pinceY <= yLimit:
 			if wasteGrid.checkAt(false, boat.position.x + pince.position.x + grabTexture.get_size().x * scaleX/1.5 * boatLook + 10, boat.position.y + pince.position.y*2 + grabTexture.get_size().y*scaleY) != -2:
-				pinceY += 5
+				pinceY += pinceSpeed
+			else:
+				pinceY -= pinceSpeed
+		else:
+			pinceY = yLimit
 	else:
 		if pinceY > 0:
 			pinceY -= 5
-		
+			
 	boat.position.y = initialYBoat + cos(cosCount)*rangeYMove
 	cosCount += 0.08
 	
