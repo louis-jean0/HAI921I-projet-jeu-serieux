@@ -6,7 +6,7 @@ extends GridContainer
 @export var grid_size = Vector2i(5, 15)
 # Taille d'une cellule : sprite 64 x 64
 @export var cell_size = Vector2i(64, 64)
-@export var gridPosition = Vector2i(340,724)
+@export var gridPosition = Vector2i(340,704)
 
 var indWaste
 
