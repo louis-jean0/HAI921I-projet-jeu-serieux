@@ -6,7 +6,7 @@ extends GridContainer
 @export var grid_size = Vector2i(5, 15)
 # Taille d'une cellule : sprite 64 x 64
 @export var cell_size = Vector2i(64, 64)
-@export var gridPosition = Vector2i(340,704)
+@export var gridPosition = Vector2(340,704)
 @export var tailleSequenceRecyclage = 3
 
 var indWaste
@@ -76,7 +76,6 @@ func check_if_empty(positionWaste, typeWaste):
 
 func recycleWaste(positionWaste, typeWaste):
 	var res = [] # Liste des déchets qui vont tomber suite au recyclage des déchets plus bas
-	# print("Recyclage des déchets")
 	var i = int((positionWaste.x + cell_size.x/2 -gridPosition.x)/cell_size.x) 
 	var j = int(((600+cell_size.y)-(positionWaste.y + cell_size.y/2 - gridPosition.y))/cell_size.y)
 	
@@ -117,17 +116,15 @@ func recycleWaste(positionWaste, typeWaste):
 			# Identifier les déchets au dessus de celui qu'on vient de recycler
 			for k in range(1,grid_size.x - j,1):
 				var up_waste = listOfWaste[(j+k)*grid_size.y + i+offset]
-				
-				# A FINIR ICI
-				#var fw = Waste.new()
-				#fw.type = holdingWaste.type
-				#fw.sprite.position = holdingWaste.sprite.position
-				#fw.sprite.texture = holdingWaste.sprite.texture
-			
-				self.remove_child(up_waste.sprite)
-				listOfWaste[(j+k)*grid_size.y + i+offset].type = -1
 				if up_waste.type != -1:
-					res.append(up_waste)
+					var newWaste = Waste.new()
+					newWaste.type = up_waste.type
+					# Attention à bien calculer les coordonnées monde (en ajoutant la position de la grille)
+					newWaste.sprite.position = up_waste.sprite.position + gridPosition
+					newWaste.sprite.texture = up_waste.sprite.texture
+					listOfWaste[(j+k)*grid_size.y + i+offset].type = -1
+					self.remove_child(up_waste.sprite)
+					res.append(newWaste)
 				else:
 					break
 	return res
