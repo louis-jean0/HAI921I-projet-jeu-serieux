@@ -1,12 +1,13 @@
 extends GridContainer
 
 
-@export var delay_between_spawn = 0.2
+@export var delay_between_spawn = 0.01
 # Taille de la grille : rows x columns
 @export var grid_size = Vector2i(5, 15)
 # Taille d'une cellule : sprite 64 x 64
 @export var cell_size = Vector2i(64, 64)
 @export var gridPosition = Vector2i(340,704)
+@export var tailleSequenceRecyclage = 3
 
 var indWaste
 var listOfWaste = []
@@ -72,3 +73,65 @@ func check_if_empty(positionWaste, typeWaste):
 				self.add_child(newWaste.sprite)
 				return true
 	return false
+
+func recycleWaste(positionWaste, typeWaste):
+	var res = [] # Liste des déchets qui vont tomber suite au recyclage des déchets plus bas
+	# print("Recyclage des déchets")
+	var i = int((positionWaste.x + cell_size.x/2 -gridPosition.x)/cell_size.x) 
+	var j = int(((600+cell_size.y)-(positionWaste.y + cell_size.y/2 - gridPosition.y))/cell_size.y)
+	
+	# Vérification horizontale
+	var tailleSeq = 1
+	var extremeGauche = 0
+	
+	# Vers la gauche
+	for offset in range(-1,-1*tailleSequenceRecyclage,-1):
+		if i+offset >= 0:
+			var checked_waste = listOfWaste[j*grid_size.y + i+offset]
+			if checked_waste.type == typeWaste:
+				tailleSeq += 1
+				extremeGauche = offset
+			else:
+				break
+		else:
+			break
+	
+	# Vers la droite
+	for offset in range(1,tailleSequenceRecyclage,1):
+		if i+offset < grid_size.y:
+			var checked_waste = listOfWaste[j*grid_size.y + i+offset]
+			if checked_waste.type == typeWaste:
+				tailleSeq += 1
+			else:
+				break
+		else:
+			break
+	
+	# Recyclage des déchets identifiés (si la taille de la séquence est supérieur ou égal au seuil défini)
+	if tailleSeq >= tailleSequenceRecyclage:
+		for offset in range(extremeGauche,extremeGauche+tailleSeq,1):
+			var w = listOfWaste[j*grid_size.y + i+offset]
+			self.remove_child(w.sprite)
+			listOfWaste[j*grid_size.y + i+offset].type = -1
+			
+			# Identifier les déchets au dessus de celui qu'on vient de recycler
+			for k in range(1,grid_size.x - j,1):
+				var up_waste = listOfWaste[(j+k)*grid_size.y + i+offset]
+				
+				# A FINIR ICI
+				#var fw = Waste.new()
+				#fw.type = holdingWaste.type
+				#fw.sprite.position = holdingWaste.sprite.position
+				#fw.sprite.texture = holdingWaste.sprite.texture
+			
+				self.remove_child(up_waste.sprite)
+				listOfWaste[(j+k)*grid_size.y + i+offset].type = -1
+				if up_waste.type != -1:
+					res.append(up_waste)
+				else:
+					break
+	return res
+		
+		
+	
+	

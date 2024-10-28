@@ -119,6 +119,10 @@ func _process(delta):
 			if wasteGrid.check_if_empty(w.sprite.position, w.type):
 				deleteSprite2D(w)
 				fallingWaste.remove_at(i)
+				var newWasteFalling = wasteGrid.recycleWaste(w.sprite.position, w.type)
+				print("Il y a des déchets à faire tomber : ", newWasteFalling.size())
+				for d in range(newWasteFalling.size()):
+					self.add_child(newWasteFalling[d].sprite)
 				break # On est obligé de stopper la boucle for car les indices des éléments changent à cause du remove_at
 		
 		# Le déchet tombe dans le vide
