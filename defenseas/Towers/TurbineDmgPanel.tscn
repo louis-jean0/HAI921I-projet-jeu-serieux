@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbwvyn1vbcvg6"]
+
+[ext_resource type="Texture2D" uid="uid://o1a6tlm5o6gi" path="res://Towers/sprites/Turbine2.png" id="1_41xbo"]
+[ext_resource type="Script" path="res://Towers/TurbineDmgPanel.gd" id="1_63u2i"]
+
+[node name="TurbineDmgPanel" type="Panel"]
+custom_minimum_size = Vector2(128, 128)
+offset_right = 128.0
+offset_bottom = 128.0
+script = ExtResource("1_63u2i")
+
+[node name="Turbine2" type="Sprite2D" parent="."]
+position = Vector2(64, 64)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_41xbo")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

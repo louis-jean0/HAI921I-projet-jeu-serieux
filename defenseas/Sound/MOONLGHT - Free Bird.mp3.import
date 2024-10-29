@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c33n3ayq3rpr7"
+path="res://.godot/imported/MOONLGHT - Free Bird.mp3-412a5f9434de4b898ed4fdb234f82231.mp3str"
+
+[deps]
+
+source_file="res://Sound/MOONLGHT - Free Bird.mp3"
+dest_files=["res://.godot/imported/MOONLGHT - Free Bird.mp3-412a5f9434de4b898ed4fdb234f82231.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

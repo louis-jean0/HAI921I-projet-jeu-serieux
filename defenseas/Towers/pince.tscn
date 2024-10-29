@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3342yvdassp6"]
+
+[ext_resource type="Texture2D" uid="uid://c3npsji5l6q36" path="res://Towers/sprites/pince.png" id="1_gt531"]
+[ext_resource type="Script" path="res://Towers/pince.gd" id="1_ld5a0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0oj1q"]
+size = Vector2(187, 172)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq7v8"]
+size = Vector2(214.75, 198)
+
+[node name="Pince" type="CharacterBody2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_ld5a0")
+
+[node name="Pince" type="Sprite2D" parent="."]
+texture = ExtResource("1_gt531")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 42)
+shape = SubResource("RectangleShape2D_0oj1q")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 42)
+shape = SubResource("RectangleShape2D_fq7v8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

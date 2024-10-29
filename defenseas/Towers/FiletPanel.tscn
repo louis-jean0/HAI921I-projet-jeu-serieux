@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvmo3r5p4owcr"]
+
+[ext_resource type="Texture2D" uid="uid://cq5tnbg431bfs" path="res://Towers/sprites/Filet.png" id="1_hsn01"]
+[ext_resource type="Script" path="res://Towers/FiletPanel.gd" id="1_hts28"]
+
+[node name="FiletPanel" type="Panel"]
+custom_minimum_size = Vector2(128, 128)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_hts28")
+
+[node name="Filet" type="Sprite2D" parent="."]
+position = Vector2(64, 64)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_hsn01")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

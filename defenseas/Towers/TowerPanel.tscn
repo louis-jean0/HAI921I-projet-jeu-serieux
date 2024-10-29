@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://qr3rmrbnfx8t"]
+
+[ext_resource type="Script" path="res://Towers/TowerPanel.gd" id="1_ywng0"]
+[ext_resource type="Texture2D" uid="uid://cyx1s3vuf1aue" path="res://Towers/sprites/tower.png" id="2_avkha"]
+
+[node name="TowerPanel" type="Panel"]
+custom_minimum_size = Vector2(128, 128)
+offset_right = 128.0
+offset_bottom = 128.0
+script = ExtResource("1_ywng0")
+
+[node name="Tower" type="Sprite2D" parent="."]
+position = Vector2(77, 66)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_avkha")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
