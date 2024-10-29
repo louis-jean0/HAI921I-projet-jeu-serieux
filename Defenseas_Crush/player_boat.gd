@@ -24,7 +24,11 @@ var wasteGrid
 
 var frameIndex
 var spriteFrames
-var grabTexture
+var getTexture
+# Dimension du sprite de la pince
+var grabSpriteSize
+# Dimension du sprite du bateau
+var boatSpriteSize
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,16 +43,23 @@ func _ready() -> void:
 	wasteGrid = get_parent().get_node("wasteGrid")
 	scaleX = pince.scale.x
 	scaleY = pince.scale.y
+	
 	frameIndex = pince.get_frame()
 	spriteFrames = pince.get_sprite_frames()
-	grabTexture = spriteFrames.get_frame_texture("closeGrap", frameIndex)
+	getTexture = spriteFrames.get_frame_texture("closeGrap", frameIndex)
+	grabSpriteSize = getTexture.get_size()
+	
+	frameIndex = boat.get_frame()
+	spriteFrames = boat.get_sprite_frames()
+	getTexture = spriteFrames.get_frame_texture("goLeft", frameIndex)
+	boatSpriteSize = getTexture.get_size()
 
 func _draw():
 	# Dessine le fil reliant le bateau à la pince
-	draw_line(Vector2(boat.position.x + pince.position.x + grabTexture.get_size().x * scaleX/1.5 * boatLook, boat.position.y - 50), Vector2(boat.position.x + pince.position.x + grabTexture.get_size().x * scaleX/1.5 * boatLook, boat.position.y + pince.position.y*2), Color.DARK_SLATE_GRAY, 10.0)
+	draw_line(Vector2(boat.position.x + pince.position.x + grabSpriteSize.x * scaleX/1.5 * boatLook, boat.position.y - 50), Vector2(boat.position.x + pince.position.x + grabSpriteSize.x * scaleX/1.5 * boatLook, boat.position.y + pince.position.y*2), Color.DARK_SLATE_GRAY, 10.0)
 
 	# Dessine un point là où vise la pince
-	#draw_circle(Vector2i( boat.position.x + pince.position.x + grabTexture.get_size().x * scaleX/1.5 * boatLook + 10*boatLook + 20, boat.position.y + pince.position.y*2 + grabTexture.get_size().y*scaleY + 10), 10, Color.DARK_RED)
+	#draw_circle(Vector2i( boat.position.x + pince.position.x + grabSpriteSize.x * scaleX/1.5 * boatLook + 10*boatLook + 20, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scaleY + 10), 10, Color.DARK_RED)
 
 func deleteSprite2D(wasteToDelete):
 	# wasteToDelete.queue_free() # Supprime le noeud de la scène
@@ -63,7 +74,7 @@ func _process(delta):
 		velocity.x = -1
 	if Input.is_action_just_pressed("grabAction"):
 		pince.animation = "closeGrap"
-		var typeHold = wasteGrid.checkAt(true, boat.position.x + pince.position.x + grabTexture.get_size().x * scaleX/1.5 * boatLook + 10*boatLook + 20, boat.position.y + pince.position.y*2 + grabTexture.get_size().y*scaleY + 15)
+		var typeHold = wasteGrid.checkAt(true, boat.position.x + pince.position.x + grabSpriteSize.x * scaleX/1.5 * boatLook + 10*boatLook + 20, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scaleY + 15)
 		if typeHold != -1:
 			isHoldingWaste = true
 			holdingWaste = Waste.new()
@@ -87,14 +98,14 @@ func _process(delta):
 		
 	if Input.is_action_pressed("downPince"):
 		if pinceY < yLimit:
-			if wasteGrid.checkAt(false, boat.position.x + pince.position.x + grabTexture.get_size().x * scaleX/1.5 * boatLook + 10, boat.position.y + pince.position.y*2 + grabTexture.get_size().y*scaleY) != -2:
+			if wasteGrid.checkAt(false, boat.position.x + pince.position.x + grabSpriteSize.x * scaleX/1.5 * boatLook + 10, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scaleY) != -2:
 				if not hasTouchedWaste:
 					pinceY += pinceSpeed
 			else:
 				hasTouchedWaste = true
 				pinceY -= pinceSpeed
 		else:
-			if wasteGrid.checkAt(false, boat.position.x + pince.position.x + grabTexture.get_size().x * scaleX/1.5 * boatLook + 10, boat.position.y + pince.position.y*2 + grabTexture.get_size().y*scaleY) == -2:
+			if wasteGrid.checkAt(false, boat.position.x + pince.position.x + grabSpriteSize.x * scaleX/1.5 * boatLook + 10, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scaleY) == -2:
 				pinceY -= pinceSpeed
 			else:
 				pinceY = yLimit
@@ -109,7 +120,7 @@ func _process(delta):
 	pince.position = Vector2i(50*boatLook,pinceY)
 	
 	if isHoldingWaste:
-		holdingWaste.sprite.position = Vector2i(boat.position.x + pince.position.x + grabTexture.get_size().x * scaleX/1.5 * boatLook + 10, boat.position.y + pince.position.y*2 + grabTexture.get_size().y*scaleY)
+		holdingWaste.sprite.position = Vector2i(boat.position.x + pince.position.x + grabSpriteSize.x * scaleX/1.5 * boatLook + 10, boat.position.y + pince.position.y*2 +grabSpriteSize.y*scaleY)
 	
 	for i in range(fallingWaste.size()):
 		# Si besoin de vérifier que fallingWaste[i] != null, faire --> if fallingWaste[i]
@@ -126,7 +137,7 @@ func _process(delta):
 				break # On est obligé de stopper la boucle for car les indices des éléments changent à cause du remove_at
 		
 		# Le déchet tombe dans le vide
-		if w.sprite.position.y > window_size.y + 64:
+		if w.sprite.position.y > window_size.y + 128:
 			deleteSprite2D(w)
 			fallingWaste.remove_at(i)
 			break # On est obligé de stopper la boucle for car les indices des éléments changent à cause du remove_at
@@ -134,14 +145,18 @@ func _process(delta):
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		if velocity.x > 0:
-			if boat.position.x < 1550:
+			if boat.position.x < window_size.x + boatSpriteSize.x/2 + 10:
 				boat.position += velocity
 				boat.animation = "goRight"
 				boatLook = -1
+			else :
+				boat.position.x = -boatSpriteSize.x/2
 		else:
-			if boat.position.x > 110:
+			if boat.position.x > -boatSpriteSize.x/2 - 10:
 				boat.position += velocity
 				boat.animation = "goLeft"
 				boatLook = 1
+			else :
+				boat.position.x = window_size.x + boatSpriteSize.x/2
 	
 	queue_redraw()

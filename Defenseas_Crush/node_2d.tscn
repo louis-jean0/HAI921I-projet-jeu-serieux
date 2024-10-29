@@ -63,10 +63,8 @@ animations = [{
 script = SubResource("GDScript_o1lg7")
 
 [node name="background" type="TextureRect" parent="."]
-offset_left = -14.0
-offset_top = -12.0
-offset_right = 1673.0
-offset_bottom = 1488.0
+offset_right = 1687.0
+offset_bottom = 1500.0
 texture = ExtResource("1_xwpu7")
 
 [node name="wasteGrid" type="GridContainer" parent="."]

@@ -3,10 +3,10 @@ extends GridContainer
 
 @export var delay_between_spawn = 0.01
 # Taille de la grille : rows x columns
-@export var grid_size = Vector2i(5, 15)
-# Taille d'une cellule : sprite 64 x 64
-@export var cell_size = Vector2i(64, 64)
-@export var gridPosition = Vector2(340,704)
+@export var grid_size = Vector2i(5, 10)
+# Taille d'une cellule : sprite 128 x 128
+@export var cell_size = Vector2i(128, 128)
+@export var gridPosition = Vector2(180,704)
 @export var tailleSequenceRecyclage = 3
 
 var indWaste
