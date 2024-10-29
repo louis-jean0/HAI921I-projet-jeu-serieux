@@ -1,12 +1,10 @@
 extends GridContainer
 
-
-@export var delay_between_spawn = 0.01
 # Taille de la grille : rows x columns
 @export var grid_size = Vector2i(5, 10)
-# Taille d'une cellule : sprite 128 x 128
+@export var delay_between_spawn = 0.01 # Pour les tests, ensuite les seront tomberont dans la mer depuis l'autre phase du jeu
 @export var cell_size = Vector2i(128, 128)
-@export var gridPosition = Vector2(180,704)
+@export var gridPosition = Vector2(180,754)
 @export var tailleSequenceRecyclage = 3
 
 var indWaste
@@ -47,8 +45,9 @@ func checkAt(hasToBeDeleted, aimX,aimY):
 		var w = listOfWaste[i]
 		if w.type != -1:
 			var w_position = w.sprite.position
-			if w_position.x + gridPosition.x < aimX and aimX < w_position.x + gridPosition.x + cell_size.x: # Bien prendre en compte les coordonnées monde des cellules (et pas par rapport à la grille)
-				if w_position.y + gridPosition.y < aimY and aimY < w_position.y + gridPosition.y + cell_size.y   :
+			# On regarde si la position de la pince est comprise entre les 2 extrémités du sprite du déchet
+			if gridPosition.x + w_position.x - cell_size.x/2 < aimX and aimX < gridPosition.x + w_position.x + cell_size.x/2: # Bien prendre en compte les coordonnées monde des cellules (et pas par rapport à la grille)
+				if gridPosition.y + w_position.y - cell_size.y/8 < aimY and aimY < gridPosition.y + w_position.y + cell_size.y : # Si on voulait être précis il faudrait mettre ... + (7*cell_size.y)/8
 					if hasToBeDeleted:
 						self.remove_child(w.sprite)
 					else: # Si hasToBeDeleted vaut false, cet appel de fonction sert à déterminer si on peut descendre la pince ou non
@@ -59,8 +58,8 @@ func checkAt(hasToBeDeleted, aimX,aimY):
 	return -1
 
 func check_if_empty(positionWaste, typeWaste):
-	var i = int((positionWaste.x + cell_size.x/2 -gridPosition.x)/cell_size.x) 
-	var j = int(((600+cell_size.y)-(positionWaste.y + cell_size.y/2 - gridPosition.y))/cell_size.y)	
+	var i = int((positionWaste.x + cell_size.x/1.9 - gridPosition.x) / cell_size.x) 
+	var j = int(((600+cell_size.y) - (positionWaste.y - gridPosition.y)) / cell_size.y)	
 	if i >= 0 and i < grid_size.y and j >= 0 and j < grid_size.x:
 		if j == 0 or listOfWaste[(j-1)*grid_size.y + i].type != -1: # Si il y a bien un déchet en dessous ou qu'on est au fond
 			if listOfWaste[j*grid_size.y + i].type == -1 : # S'il n'y a pas de déchet à cet emplacement
@@ -127,6 +126,29 @@ func recycleWaste(positionWaste, typeWaste):
 					res.append(newWaste)
 				else:
 					break
+	
+	# Vérification verticale (beaucoup plus simple que horizontale)
+	tailleSeq = 1
+	
+	# Vers le bas (uniquement)
+	for offset in range(-1,-1*tailleSequenceRecyclage,-1):
+		if j+offset >= 0:
+			var checked_waste = listOfWaste[(j+offset)*grid_size.y + i]
+			if checked_waste.type == typeWaste:
+				tailleSeq += 1
+			else:
+				break
+		else:
+			break
+	
+	# Recyclage des déchets identifiés (si la taille de la séquence est supérieur ou égal au seuil défini)
+	if tailleSeq >= tailleSequenceRecyclage:
+		for offset in range(0,-1*tailleSeq,-1):
+			var w = listOfWaste[(j+offset)*grid_size.y + i]
+			self.remove_child(w.sprite)
+			listOfWaste[(j+offset)*grid_size.y + i].type = -1
+	
+	# Impossible d'avoir des déchets au dessus de ceux qu'on vient de recycler
 	return res
 		
 		

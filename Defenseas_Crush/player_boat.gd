@@ -4,33 +4,34 @@ extends Node2D
 var boat
 var pince
 var cosCount = 0
-var rangeYMove = 5
+var rangeYMove = 5 # Doucement sur cette valeur, sinon la pince perd en précision
 var initialYBoat = 580
-var pinceY = 0
-var boatLook = 1 # 1 pour left, -1 pour right (permet de bien positionner la pince)
-var scaleX
-var scaleY
-var holdingWaste # Déchet porté par la pince
+var minPinceY = 50
+var pinceY = minPinceY
+var scalePince
+var holdingWaste # Instance de Waste portée par la pince
 var isHoldingWaste = false
 var fallingWaste = []
 var fallingSpeed = 5
 var window_size
 var pinceSpeed = 5
-var yLimit = 350
+var yLimit = 400
 var hasTouchedWaste = false
 
 var stringColor = Color(55,55,55)
 var wasteGrid
 
-var frameIndex
-var spriteFrames
-var getTexture
 # Dimension du sprite de la pince
 var grabSpriteSize
 # Dimension du sprite du bateau
 var boatSpriteSize
 
-# Called when the node enters the scene tree for the first time.
+func getSizeOfSprite(sprite, sprite_name):
+	var frameIndex = sprite.get_frame()
+	var spriteFrames = sprite.get_sprite_frames()
+	var getTexture = spriteFrames.get_frame_texture(sprite_name, frameIndex)
+	return getTexture.get_size()
+
 func _ready() -> void:
 	window_size = get_viewport_rect().size # Récupère les dimensions de la fenêtre
 	boat = self.get_child(0)
@@ -39,27 +40,18 @@ func _ready() -> void:
 	position = Vector2i(0,0)
 	boat.position = Vector2i(750,initialYBoat)
 	pince.animation = "openGrap"
-	pince.position = Vector2i(50,0)
+	pince.position = Vector2i(0,minPinceY)
 	wasteGrid = get_parent().get_node("wasteGrid")
-	scaleX = pince.scale.x
-	scaleY = pince.scale.y
+	scalePince = pince.scale
 	
-	frameIndex = pince.get_frame()
-	spriteFrames = pince.get_sprite_frames()
-	getTexture = spriteFrames.get_frame_texture("closeGrap", frameIndex)
-	grabSpriteSize = getTexture.get_size()
-	
-	frameIndex = boat.get_frame()
-	spriteFrames = boat.get_sprite_frames()
-	getTexture = spriteFrames.get_frame_texture("goLeft", frameIndex)
-	boatSpriteSize = getTexture.get_size()
+	grabSpriteSize = getSizeOfSprite(pince, "closeGrap")
+	boatSpriteSize = getSizeOfSprite(boat, "goLeft")
 
 func _draw():
 	# Dessine le fil reliant le bateau à la pince
-	draw_line(Vector2(boat.position.x + pince.position.x + grabSpriteSize.x * scaleX/1.5 * boatLook, boat.position.y - 50), Vector2(boat.position.x + pince.position.x + grabSpriteSize.x * scaleX/1.5 * boatLook, boat.position.y + pince.position.y*2), Color.DARK_SLATE_GRAY, 10.0)
-
+	draw_line(Vector2(boat.position.x, boat.position.y), Vector2(boat.position.x, boat.position.y + pince.position.y*2), Color.DARK_SLATE_GRAY, 10.0)
 	# Dessine un point là où vise la pince
-	#draw_circle(Vector2i( boat.position.x + pince.position.x + grabSpriteSize.x * scaleX/1.5 * boatLook + 10*boatLook + 20, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scaleY + 10), 10, Color.DARK_RED)
+	# draw_circle(Vector2i(boat.position.x + (grabSpriteSize.x * scalePince.x)/2 - 30, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scalePince.y + 15), 10, Color.DARK_RED)
 
 func deleteSprite2D(wasteToDelete):
 	# wasteToDelete.queue_free() # Supprime le noeud de la scène
@@ -67,14 +59,14 @@ func deleteSprite2D(wasteToDelete):
 	# wasteToDelete = null
 	
 func _process(delta):	
-	var velocity = Vector2.ZERO # The player's movement vector.
+	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x = 1
 	if Input.is_action_pressed("move_left"): 
 		velocity.x = -1
 	if Input.is_action_just_pressed("grabAction"):
 		pince.animation = "closeGrap"
-		var typeHold = wasteGrid.checkAt(true, boat.position.x + pince.position.x + grabSpriteSize.x * scaleX/1.5 * boatLook + 10*boatLook + 20, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scaleY + 15)
+		var typeHold = wasteGrid.checkAt(true, boat.position.x + (grabSpriteSize.x * scalePince.x)/2 - 30, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scalePince.y + 15)
 		if typeHold != -1:
 			isHoldingWaste = true
 			holdingWaste = Waste.new()
@@ -98,29 +90,29 @@ func _process(delta):
 		
 	if Input.is_action_pressed("downPince"):
 		if pinceY < yLimit:
-			if wasteGrid.checkAt(false, boat.position.x + pince.position.x + grabSpriteSize.x * scaleX/1.5 * boatLook + 10, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scaleY) != -2:
+			if wasteGrid.checkAt(false, boat.position.x + (grabSpriteSize.x * scalePince.x)/2 - 30, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scalePince.y) != -2:
 				if not hasTouchedWaste:
 					pinceY += pinceSpeed
 			else:
 				hasTouchedWaste = true
 				pinceY -= pinceSpeed
 		else:
-			if wasteGrid.checkAt(false, boat.position.x + pince.position.x + grabSpriteSize.x * scaleX/1.5 * boatLook + 10, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scaleY) == -2:
+			if wasteGrid.checkAt(false, boat.position.x + (grabSpriteSize.x * scalePince.x)/2 - 30, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scalePince.y) == -2:
 				pinceY -= pinceSpeed
 			else:
 				pinceY = yLimit
 	else:
 		hasTouchedWaste = false
-		if pinceY > 0:
+		if pinceY > minPinceY:
 			pinceY -= 5
 			
 	boat.position.y = initialYBoat + cos(cosCount)*rangeYMove
 	cosCount += 0.08
 	
-	pince.position = Vector2i(50*boatLook,pinceY)
+	pince.position = Vector2i(0,pinceY)
 	
 	if isHoldingWaste:
-		holdingWaste.sprite.position = Vector2i(boat.position.x + pince.position.x + grabSpriteSize.x * scaleX/1.5 * boatLook + 10, boat.position.y + pince.position.y*2 +grabSpriteSize.y*scaleY)
+		holdingWaste.sprite.position = Vector2i(boat.position.x + (grabSpriteSize.x * scalePince.x)/2 - 32, boat.position.y + pince.position.y*2 +grabSpriteSize.y*scalePince.y)
 	
 	for i in range(fallingWaste.size()):
 		# Si besoin de vérifier que fallingWaste[i] != null, faire --> if fallingWaste[i]
@@ -148,14 +140,12 @@ func _process(delta):
 			if boat.position.x < window_size.x + boatSpriteSize.x/2 + 10:
 				boat.position += velocity
 				boat.animation = "goRight"
-				boatLook = -1
 			else :
 				boat.position.x = -boatSpriteSize.x/2
 		else:
 			if boat.position.x > -boatSpriteSize.x/2 - 10:
 				boat.position += velocity
 				boat.animation = "goLeft"
-				boatLook = 1
 			else :
 				boat.position.x = window_size.x + boatSpriteSize.x/2
 	
