@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://jflff1lbvfgu"
-path="res://.godot/imported/Fontspring-DEMO-ccoverbyteoff-regular.otf-4946e832aeadd2a6da2203198ea833ba.fontdata"
+uid="uid://bdr3e7xl18ad4"
+path="res://.godot/imported/HomeVideo-BLG6G.ttf-207cccfa21db623d6544e64b57a664df.fontdata"
 
 [deps]
 
-source_file="res://Font/Fontspring-DEMO-ccoverbyteoff-regular.otf"
-dest_files=["res://.godot/imported/Fontspring-DEMO-ccoverbyteoff-regular.otf-4946e832aeadd2a6da2203198ea833ba.fontdata"]
+source_file="res://Font/HomeVideo-BLG6G.ttf"
+dest_files=["res://.godot/imported/HomeVideo-BLG6G.ttf-207cccfa21db623d6544e64b57a664df.fontdata"]
 
 [params]
 
@@ -28,12 +28,7 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[{
-"chars": [],
-"glyphs": [],
-"name": "New Configuration",
-"size": Vector2i(16, 0)
-}]
+preload=[]
 language_support={}
 script_support={}
 opentype_features={}

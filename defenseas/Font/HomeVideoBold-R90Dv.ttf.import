@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://jflff1lbvfgu"
-path="res://.godot/imported/Fontspring-DEMO-ccoverbyteoff-regular.otf-4946e832aeadd2a6da2203198ea833ba.fontdata"
+uid="uid://c3kd6dlboi8sa"
+path="res://.godot/imported/HomeVideoBold-R90Dv.ttf-e043dfa3d661086c5f4699b82bf94b05.fontdata"
 
 [deps]
 
-source_file="res://Font/Fontspring-DEMO-ccoverbyteoff-regular.otf"
-dest_files=["res://.godot/imported/Fontspring-DEMO-ccoverbyteoff-regular.otf-4946e832aeadd2a6da2203198ea833ba.fontdata"]
+source_file="res://Font/HomeVideoBold-R90Dv.ttf"
+dest_files=["res://.godot/imported/HomeVideoBold-R90Dv.ttf-e043dfa3d661086c5f4699b82bf94b05.fontdata"]
 
 [params]
 
@@ -28,12 +28,7 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[{
-"chars": [],
-"glyphs": [],
-"name": "New Configuration",
-"size": Vector2i(16, 0)
-}]
+preload=[]
 language_support={}
 script_support={}
 opentype_features={}

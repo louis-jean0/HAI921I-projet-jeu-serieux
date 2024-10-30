@@ -4,6 +4,7 @@ extends StaticBody2D
 var max_destroy_count = 20 # Nombre maximal d'objets à supprimer avant la destruction 
 var cpt = 0  # Compteur pour le nombre d'objets supprimés
 var currTarget : Node2D = null
+@onready var resources_manager = get_node("/root/Main/Resources")
 
 func _ready() -> void:
 	# Connecter le signal de détection de collision en utilisant un Callable
@@ -15,6 +16,7 @@ func _process(delta: float) -> void:
 		if("Enemy" in currTarget.name):
 			currTarget.health = 0
 			cpt += 1  # Incrémenter le compteur
+			resources_manager.add_qqt()
 		
 		# Vérifier si le filet a atteint la limite d'objets détruits
 		if cpt >= max_destroy_count:
