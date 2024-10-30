@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 		if("Enemy" in currTarget.name):
 			currTarget.health = 0
 			cpt += 1  # Incrémenter le compteur
+			resources_manager.add_qqt()
 		
 		# Vérifier si le filet a atteint la limite d'objets détruits
 		if cpt >= max_destroy_count:

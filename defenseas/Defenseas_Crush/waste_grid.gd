@@ -10,6 +10,14 @@ extends GridContainer
 var indWaste
 var listOfWaste = []
 
+func hasReachedLimit():
+	var count = 0;
+	for i in range(listOfWaste.size()):
+		if listOfWaste[i].type != -1:
+			count += 1
+	print("count = ",count)
+	return count >= 35
+	
 func _ready():
 	clear_grid()
 	position = gridPosition

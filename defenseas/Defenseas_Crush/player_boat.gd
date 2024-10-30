@@ -26,6 +26,11 @@ var grabSpriteSize
 # Dimension du sprite du bateau
 var boatSpriteSize
 
+func clearSprite():
+	for s in self.get_children():
+		if s is Sprite2D:
+			self.remove_child(s)
+			
 func getSizeOfSprite(sprite, sprite_name):
 	var frameIndex = sprite.get_frame()
 	var spriteFrames = sprite.get_sprite_frames()
@@ -124,6 +129,9 @@ func _process(delta):
 		w.sprite.position.y += fallingSpeed * delta
 		if w.sprite.position.y > wasteGrid.gridPosition.y: # Ca ne sert à rien d'appeler check_if_empty au dela de cette hauteur
 			if wasteGrid.check_if_empty(w.sprite.position, w.type):
+				if wasteGrid.hasReachedLimit():
+					get_tree().get_root().get_node("Main").returnToTower();
+					return
 				deleteSprite2D(w)
 				fallingWaste.remove_at(i)
 				var newWasteFalling = wasteGrid.recycleWaste(w.sprite.position, w.type)

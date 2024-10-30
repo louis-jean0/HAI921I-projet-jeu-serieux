@@ -8,6 +8,7 @@ const ENEMY_LIMIT = 35
 func _ready() -> void:
 	enemy_progress_bar.value = 0
 	enemy_progress_bar.max_value = ENEMY_LIMIT
+
 	
 func _process(delta: float) -> void:
 	var gridWaste = get_tree().get_root().get_children()[-1].getWasteGrid()

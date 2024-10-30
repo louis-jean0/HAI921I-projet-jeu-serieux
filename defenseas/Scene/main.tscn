@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=23 format=3 uid="uid://eejeutmdl1bp"]
+
 
 [ext_resource type="Script" path="res://Scene/Main.gd" id="1_ubnuo"]
 [ext_resource type="Script" path="res://Enemies/path_spawner.gd" id="3_jcus7"]
@@ -61,6 +63,7 @@ offset_right = 1338.0
 offset_bottom = 580.0
 theme = SubResource("Theme_8ghwl")
 theme_override_font_sizes/bold_font_size = 40
+
 bbcode_enabled = true
 
 [node name="Towers" type="Node2D" parent="."]
@@ -142,6 +145,7 @@ visible = false
 
 [node name="Win" parent="." instance=ExtResource("15_qpgyq")]
 visible = false
+
 z_index = 10
 
 [node name="StatsUI" type="CanvasLayer" parent="."]

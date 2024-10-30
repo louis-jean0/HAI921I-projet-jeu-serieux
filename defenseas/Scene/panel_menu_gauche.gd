@@ -3,6 +3,7 @@ extends Control
 var first_tower_instance: Node = null
 
 var script_tower=load("res://Towers/FirstTower.gd")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var icon1 = preload("res://miscellaneous/pause1.png")
@@ -42,8 +43,6 @@ func _on_fermer_menu_pressed() -> void:
 func _on_menu_principal_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scene/menu.tscn")
-	
-	
 	
 func _on_volume_value_changed(value: float) -> void:
 	var volume_db = linear_to_db(value / 10.0)  # Convertit une valeur linéaire en dB

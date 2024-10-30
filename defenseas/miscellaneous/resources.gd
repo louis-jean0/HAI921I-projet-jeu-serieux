@@ -96,6 +96,7 @@ func add_towers() -> void:
 func update_towers_label() -> void:
 	towers_label.text = str(towers)
 	
+
 func add_turbines() -> void:
 	turbines += 1
 	update_turbines_label()

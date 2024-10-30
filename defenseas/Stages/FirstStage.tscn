@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=10 format=3 uid="uid://kbj4nhm4cvsj"]
 
 [ext_resource type="PackedScene" uid="uid://bbskhekfyy48y" path="res://Tilemap/tile_map.tscn" id="1_olplc"]
@@ -40,6 +41,20 @@ corner_radius_bottom_left = 10
 default_font = ExtResource("3_agae4")
 default_font_size = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wl8l"]
+bg_color = Color(0.844149, 0.785338, 0.757813, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnyvu"]
+bg_color = Color(0.60003, 0, 0.0802024, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource("1_olplc")]
@@ -68,6 +83,7 @@ scale = Vector2(0.999816, 1.00933)
 polygon = PackedVector2Array(-260, -171, -260, -103, -485, -102, -485, 132, 535, 133, 536, -103, 203, -103, 202, -175)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+
 offset_left = 717.0
 offset_top = 29.0
 offset_right = 917.0

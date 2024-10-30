@@ -130,7 +130,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_oj37d")
 
 text = "VOLUME GLOBAL"
 
-
 [node name="Volume" type="HSlider" parent="BoxOptions/Label"]
 process_mode = 3
 modulate = Color(0.779277, 0.64299, 0.238795, 1)
