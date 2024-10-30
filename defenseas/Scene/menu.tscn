@@ -29,7 +29,7 @@ grow_vertical = 2
 script = ExtResource("1_0iety")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(753, 512)
+position = Vector2(718, 520)
 scale = Vector2(0.972222, 0.963889)
 texture = ExtResource("2_v0xir")
 
@@ -96,10 +96,10 @@ anchor_left = 4.289
 anchor_top = 2.742
 anchor_right = 4.414
 anchor_bottom = 2.742
-offset_left = -2979.4
-offset_top = 175.444
-offset_right = -2212.4
-offset_bottom = 671.444
+offset_left = -3026.4
+offset_top = 147.444
+offset_right = -2259.4
+offset_bottom = 643.444
 theme = ExtResource("3_pj6vy")
 theme_override_constants/separation = 20
 
@@ -117,7 +117,23 @@ theme_override_constants/outline_size = 10
 theme_override_constants/h_separation = 0
 theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
-text = "Lancer une partie"
+text = "LANCER UNE PARTIE"
+
+[node name="CommentJouer" type="Button" parent="BoxMenu"]
+modulate = Color(0.02, 0.771334, 1, 1)
+z_index = 1
+custom_minimum_size = Vector2(20, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+focus_neighbor_top = NodePath("../Fermer")
+theme = SubResource("Theme_p0og5")
+theme_override_colors/font_hover_color = Color(0.480231, 0.84147, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+text = "COMMENT JOUER"
 
 [node name="Options" type="Button" parent="BoxMenu"]
 modulate = Color(0.0196078, 0.772549, 1, 1)
@@ -125,16 +141,14 @@ layout_mode = 2
 theme = SubResource("Theme_knox6")
 theme_override_colors/font_hover_color = Color(0.439226, 0.831202, 1, 1)
 theme_override_constants/outline_size = 10
-text = "Options
-"
+text = "OPTIONS"
 
 [node name="Fermer" type="Button" parent="BoxMenu"]
 modulate = Color(0.0196078, 0.772549, 1, 1)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../LancerPartie")
 theme_override_constants/outline_size = 10
-text = "Quitter
-"
+text = "QUITTER"
 
 [node name="LogoDefenseasFinal" type="Sprite2D" parent="BoxMenu"]
 position = Vector2(431.003, -221)
@@ -150,5 +164,6 @@ parameters/looping = true
 [connection signal="pressed" from="BoxOptions/FermerMenu" to="." method="_on_fermer_menu_pressed"]
 [connection signal="pressed" from="BoxMenu/LancerPartie" to="." method="_on_lancer_partie_pressed"]
 [connection signal="pressed" from="BoxMenu/LancerPartie" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BoxMenu/CommentJouer" to="." method="_on_comment_jouer_pressed"]
 [connection signal="pressed" from="BoxMenu/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="BoxMenu/Fermer" to="." method="_on_fermer_pressed"]

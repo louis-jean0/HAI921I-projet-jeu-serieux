@@ -13,6 +13,14 @@ var phrases = [
 	"Les dauphins ne peuvent plus nager dans des eaux propres."
 ]
 
+var phrases_positives = [
+	"Tu as tout de même enlevé pas mal de déchets, continue !",
+	"Cependant, chaque déchet retiré est une victoire pour l'océan !",
+	"Cela dit, ton combat compte : chaque déchet retiré est un pas vers un océan plus pur !",
+	"Chaque déchet collecté sauve des vies marines, continue le combat !",
+	"N'oublie pas, un petit geste pour toi, un immense impact pour la mer."
+]
+
 var morale_phrases = [
 	"Chaque année, environ 8 millions de tonnes de plastique finissent dans nos océans.",
 	"Environ 100 millions d'animaux marins meurent chaque année à cause de la pollution.",
@@ -25,9 +33,13 @@ var morale_phrases = [
 func display_end_phrases() -> void:
 	var shuffled_phrases = phrases.duplicate()
 	shuffled_phrases.shuffle()
-	var number_of_phrases_to_show = min(4, shuffled_phrases.size())
+	var number_of_phrases_to_show = min(3, shuffled_phrases.size())
 	var selected_phrases = shuffled_phrases.slice(0, number_of_phrases_to_show)
-	stats.text = "\n".join(selected_phrases)
+	
+	var positive_phrase = phrases_positives[randi() % phrases_positives.size()]
+	selected_phrases.append(positive_phrase)
+	
+	stats.text = "\n\n".join(selected_phrases)
 	
 func display_moral() -> void:
 	var shuffled_phrases = morale_phrases.duplicate()
@@ -45,5 +57,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_rejouer_pressed() -> void:
+	get_tree().paused = false
 	var menu_scene = preload("res://Scene/menu.tscn")
 	get_tree().change_scene_to_packed(menu_scene)

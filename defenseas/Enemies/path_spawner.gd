@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var wave_config = [
-	{"enemy_count": 50, "spawn_rates": [2.5, 2.5, 2.5], "enemy_type": "FastAndStrongerEnemy", "message": "Première vague !\nLes eaux sont envahies par des emballages polluants ! Rétablis l'équilibre !"},
+	{"enemy_count": 50, "spawn_rates": [2.5, 2.5, 2.5], "enemy_type": "ClassicEnemy", "message": "Première vague !\nLes eaux sont envahies par des emballages polluants ! Rétablis l'équilibre !"},
 	{"enemy_count": 100, "spawn_rates": [2.0, 2.0, 2.0], "enemy_type": "FastEnemy", "message": "Deuxième vague !\nLes usines déversent des tonnes de plastique dans la mer ! Mets un terme à ça !"},
 	{"enemy_count": 150, "spawn_rates": [1.0, 1.0, 1.0], "enemy_type": "FastAndStrongerEnemy", "message": "Dernière vague !\nCoca-Cola déverse ses déchets dans les eaux ! Empêche-les !"}
 	]
@@ -28,6 +28,7 @@ func start_next_wave():
 		print("Toutes les vagues ont été terminées !")
 		var win_scene = get_tree().get_current_scene().get_node("Win")
 		win_scene.show()
+		get_tree().paused = true
 		return
 	
 	# Récupère la configuration de la vague actuelle

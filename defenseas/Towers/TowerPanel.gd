@@ -1,7 +1,7 @@
 extends Panel
 
 @onready var tower = preload("res://Towers/first_tower.tscn")
-var tower_value = 50 # Prix de la tour
+var tower_value = 100 # Prix de la tour
 @onready var valid_tilemap = get_tree().get_root().get_node("Main/Zone_tower1")  # Chemin vers le TileMap
 const TILE_TOWER_ALLOWED = 0  # ID du tile de placement autorisé
 @onready var resources_manager = get_node("/root/Main/Resources")

@@ -34,4 +34,6 @@ func detach() -> void:
 func handle_death() -> void:
 	var resources_manager = get_node("/root/Main/Resources")
 	resources_manager.add_plastic(plastic_value)
+	resources_manager.add_enemy_killed()
+	resources_manager.add_qqt()
 	queue_free()
