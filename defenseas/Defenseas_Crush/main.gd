@@ -2,6 +2,11 @@ extends Node2D
 
 func getWasteGrid():
 	return get_tree().get_root().get_node("World/wasteGrid").listOfWaste
+	
+func cleanWaste():
+	get_tree().get_root().get_node("World/wasteGrid").clear_grid()
+	get_tree().get_root().get_node("World/PlayerBoat").fallingWaste = []
+	get_tree().get_root().get_node("World/PlayerBoat").clearSprite()
 
 func waste_fall_in_sea(type_waste):
 	var new_waste = Waste.new()

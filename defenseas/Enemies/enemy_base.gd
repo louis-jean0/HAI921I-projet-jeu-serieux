@@ -18,6 +18,7 @@ func _ready():
 		$Sprite2D.texture = sprite_array[type_waste]
 	$Sprite2D.scale.x = 0.25
 	$Sprite2D.scale.y = 0.25
+	$Sprite2D.z_index = 2
 
 func _process(delta):
 	get_parent().set_progress(get_parent().get_progress() + speed * delta)

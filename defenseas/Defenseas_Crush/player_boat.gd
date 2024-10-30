@@ -26,6 +26,11 @@ var grabSpriteSize
 # Dimension du sprite du bateau
 var boatSpriteSize
 
+func clearSprite():
+	for s in self.get_children():
+		if s is Sprite2D:
+			self.remove_child(s)
+			
 func getSizeOfSprite(sprite, sprite_name):
 	var frameIndex = sprite.get_frame()
 	var spriteFrames = sprite.get_sprite_frames()
