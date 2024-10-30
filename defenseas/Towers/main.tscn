@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://miscellaneous/resources.gd" id="6_8ieo5"]
 [ext_resource type="Texture2D" uid="uid://mrc1cqfcm2rg" path="res://miscellaneous/bill.png" id="6_h4bnj"]
 [ext_resource type="Texture2D" uid="uid://bfpxca8c2wjgn" path="res://miscellaneous/recycle.png" id="7_gahp7"]
-[ext_resource type="Theme" path="res://Font/themeVBox.tres" id="7_ta8kp"]
+[ext_resource type="Theme" uid="uid://b1qwddp378jor" path="res://Font/themeVBox.tres" id="7_ta8kp"]
 [ext_resource type="Script" path="res://miscellaneous/texture_button.gd" id="8_xigy8"]
 [ext_resource type="PackedScene" uid="uid://dmkudhku3du1b" path="res://Scene/ui.tscn" id="11_62a4u"]
 [ext_resource type="PackedScene" uid="uid://ik2adnu67j8v" path="res://Scene/panel_menu_gauche.tscn" id="11_xmaew"]

@@ -7,6 +7,7 @@ var filet_value = 200
 const TILE_TOWER_ALLOWED = 0  # ID du tile de placement autorisé
 
 func _on_gui_input(event):
+	valid_tilemap.z_index=0
 	if(resources_manager.money < filet_value):
 		return
 	var tempFilet = filet.instantiate()
@@ -31,6 +32,7 @@ func _on_gui_input(event):
 			tempFilet.global_position = event.global_position
 			tempFilet.get_node("Area").hide()
 			resources_manager.remove_money(filet_value)
+			resources_manager.add_towers()
 		else : 
 			get_child(1).queue_free()
 	else:
