@@ -39,9 +39,29 @@ func update_plastic_label() -> void:
 	plastic_label.text = str(plastic)
 	
 func recycle_plastic() -> void:
-	money += plastic
-	add_bank(plastic)
-	plastic = 0	
+	if(plastic<=100):
+		money += plastic
+		add_bank(plastic)
+		plastic = 0	
+	if(plastic>100 && plastic<=200):
+		money += plastic*1.1
+		add_bank(plastic*1.1)
+		plastic = 0	
+	if(plastic>200 && plastic<=300):
+		money += plastic*1.2
+		add_bank(plastic*1.2)
+		plastic = 0	
+	if(plastic>300 && plastic<=400):
+		money += plastic*1.4
+		add_bank(plastic*1.4)
+		plastic = 0	
+	if(plastic>400):
+		money += plastic*1.6
+		add_bank(plastic*1.6)
+		plastic = 0	
+	
+	
+	
 	update_plastic_label()
 	update_money_label()
 
