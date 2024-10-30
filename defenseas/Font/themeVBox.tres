@@ -1,7 +1,8 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://b1qwddp378jor"]
 
-[ext_resource type="FontFile" uid="uid://bdr3e7xl18ad4" path="res://Font/HomeVideo-BLG6G.ttf" id="1_snrls"]
+[ext_resource type="FontFile" uid="uid://sqg27ix3v4mi" path="res://Demo-Overbyte/Demo_Fonts/Fontspring-DEMO-ccoverbyteoff-regular.otf" id="1_t12x3"]
 
 [resource]
-default_font = ExtResource("1_snrls")
-default_font_size = 30
+default_font = ExtResource("1_t12x3")
+default_font_size = 56
+
