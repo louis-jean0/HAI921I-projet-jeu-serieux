@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 	# Pour passer d'une scène à l'autre, en faisant en sorte qu'elles se déroulent en parallèle
 	if Input.is_action_just_pressed("switchGame"):
 		self.visible = not sceneVisible
+		get_tree().get_root().get_node("Main/ItemsPanel").visible = not sceneVisible
+		get_tree().get_root().get_node("Main/ResourcesUI").visible = not sceneVisible
 		defenseas_crush_instance.visible = sceneVisible
 		sceneVisible = not sceneVisible
 		
