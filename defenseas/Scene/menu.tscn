@@ -63,15 +63,14 @@ theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("3_3ybgv")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxEmpty_iahyf")
-text = "Volume"
+text = "VOLUME GLOBAL"
 
 [node name="Volume" type="HSlider" parent="BoxOptions/Label"]
 modulate = Color(0.779277, 0.64299, 0.238795, 1)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
-offset_left = -138.0
 offset_top = 14.0
-offset_right = 9.0
+offset_right = 147.0
 offset_bottom = 79.0
 scale = Vector2(3, 3)
 theme = SubResource("Theme_1n3sh")

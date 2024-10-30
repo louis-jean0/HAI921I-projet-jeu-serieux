@@ -131,7 +131,6 @@ func _process(delta):
 			if wasteGrid.check_if_empty(w.sprite.position, w.type):
 				if wasteGrid.hasReachedLimit():
 					get_tree().get_root().get_node("Main").returnToTower();
-					return
 				deleteSprite2D(w)
 				fallingWaste.remove_at(i)
 				var newWasteFalling = wasteGrid.recycleWaste(w.sprite.position, w.type)

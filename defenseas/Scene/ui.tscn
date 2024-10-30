@@ -72,14 +72,13 @@ offset_bottom = 284.0
 scale = Vector2(1.5, 1.5)
 theme = SubResource("Theme_0mfrb")
 theme_override_font_sizes/font_size = 12
-text = "100
-"
+text = "50"
 
 [node name="TextureRect" type="TextureRect" parent="Panel/PrixTour"]
 layout_mode = 0
-offset_left = 20.6667
+offset_left = 18.0
 offset_top = -4.0
-offset_right = 39.6667
+offset_right = 37.0
 offset_bottom = 16.0
 texture = ExtResource("2_4oet0")
 expand_mode = 1

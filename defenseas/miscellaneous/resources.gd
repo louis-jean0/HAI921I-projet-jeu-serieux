@@ -2,7 +2,7 @@ extends Node2D
 
 var plastic = 0
 var plastic_label: Label
-var money = 200
+var money = 100
 var money_label: Label
 var towers = 0
 var towers_label: Label
@@ -60,20 +60,20 @@ func recycle_plastic() -> void:
 		add_bank(plastic)
 		plastic = 0	
 	if(plastic>100 && plastic<=200):
-		money += plastic*1.1
-		add_bank(plastic*1.1)
+		money += ceil(plastic*1.1)
+		add_bank(ceil(plastic*1.1))
 		plastic = 0	
 	if(plastic>200 && plastic<=300):
-		money += plastic*1.2
-		add_bank(plastic*1.2)
+		money += ceil(plastic*1.2)
+		add_bank(ceil(plastic*1.2))
 		plastic = 0	
 	if(plastic>300 && plastic<=400):
-		money += plastic*1.4
-		add_bank(plastic*1.4)
+		money += ceil(plastic*1.4)
+		add_bank(ceil(plastic*1.4))
 		plastic = 0	
 	if(plastic>400):
-		money += plastic*1.6
-		add_bank(plastic*1.6)
+		money += ceil(plastic*1.6)
+		add_bank(ceil(plastic*1.6))
 		plastic = 0	
 	
 	update_plastic_label()

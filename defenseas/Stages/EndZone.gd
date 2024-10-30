@@ -9,9 +9,8 @@ func _ready() -> void:
 	enemy_progress_bar.value = 0
 	enemy_progress_bar.max_value = ENEMY_LIMIT
 
-	
 func _process(delta: float) -> void:
-	var gridWaste = get_tree().get_root().get_children()[-1].getWasteGrid()
+	var gridWaste = get_tree().get_root().get_node("Main").wasteGrid
 	var countWaste = 0
 	for w in gridWaste:
 		if w.type != -1:
@@ -19,7 +18,6 @@ func _process(delta: float) -> void:
 	if enemy_count != countWaste:
 		enemy_count = countWaste
 		update_progress_bar()
-	print(enemy_count)
 
 func _on_body_entered(body: Node) -> void:
 	if "Enemy" in body.name:

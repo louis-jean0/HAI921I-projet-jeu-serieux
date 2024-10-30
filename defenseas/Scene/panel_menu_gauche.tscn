@@ -127,7 +127,6 @@ theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("2_kwfu5")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oj37d")
-
 text = "VOLUME GLOBAL"
 
 [node name="Volume" type="HSlider" parent="BoxOptions/Label"]
@@ -135,9 +134,8 @@ process_mode = 3
 modulate = Color(0.779277, 0.64299, 0.238795, 1)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
-offset_left = -29.5
 offset_top = 4.0
-offset_right = 117.5
+offset_right = 147.0
 offset_bottom = 69.0
 scale = Vector2(3, 3)
 theme = SubResource("Theme_jg8dv")
@@ -184,7 +182,7 @@ theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("2_kwfu5")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oj37d")
-text = "Son des Tours"
+text = "SON DES TOURS"
 
 [node name="CheckBox" type="CheckBox" parent="BoxOptions2/Label"]
 process_mode = 3

@@ -16,7 +16,6 @@ func _ready() -> void:
 	$BoxOptions/Label/Volume.set_value_no_signal(Global.sound)
 	_on_volume_value_changed(Global.sound)
 	
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$BoxOptions/Label/Volume.set_value_no_signal(Global.sound)

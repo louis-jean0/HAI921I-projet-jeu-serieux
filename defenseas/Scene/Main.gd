@@ -46,6 +46,7 @@ func returnToTower():
 	self.visible = true
 	get_tree().get_root().get_node("Main/ItemsPanel").visible = true
 	get_tree().get_root().get_node("Main/ResourcesUI").visible = true
+	get_tree().get_root().get_node("Main/StatsUI").visible = true
 	defenseas_crush_instance.visible = false
 	
 func _process(delta: float) -> void:
