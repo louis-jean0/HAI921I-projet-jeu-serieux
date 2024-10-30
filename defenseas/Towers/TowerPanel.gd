@@ -7,6 +7,7 @@ const TILE_TOWER_ALLOWED = 0  # ID du tile de placement autorisé
 @onready var resources_manager = get_node("/root/Main/Resources")
 @onready var towers_container = get_tree().get_root().get_node("Main/Towers")
 
+
 func _on_gui_input(event):
 	valid_tilemap.z_index=0
 	towers_container.z_index = 1

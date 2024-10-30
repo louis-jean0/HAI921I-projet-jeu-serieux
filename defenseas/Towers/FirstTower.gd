@@ -5,6 +5,7 @@ var pinceDamage = 5
 var time_between_shots = 1.5
 var shoot_timer: Timer
 var currTarget : Node2D = null
+static var test_sound = true
 
 func _ready() -> void:
 	# Créer et configurer le timer
@@ -60,8 +61,9 @@ func _on_turbine_exited(body: Node) -> void:
 
 func _on_shoot_timer_timeout() -> void:
 	if currTarget != null and is_instance_valid(currTarget):
-		$ShootSound.play()
-		print($ShootSound.volume_db)
+		if(test_sound):
+			$ShootSound.play()
+			print($ShootSound.volume_db)
 		spawn_pincer(currTarget)
 
 func spawn_pincer(target: Node2D) -> void:
@@ -75,3 +77,8 @@ func spawn_pincer(target: Node2D) -> void:
 func clear_pincers() -> void:
 	for pincer in get_node("PinceContainer").get_children():
 		pincer.queue_free()
+
+static func changed_sound() -> void:
+	print("changement")
+	test_sound=!test_sound
+	

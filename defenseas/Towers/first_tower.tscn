@@ -53,7 +53,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ntyfu")
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_rl6yc")
-volume_db = -30.848
+volume_db = -30.0
 max_polyphony = 30
 
 [connection signal="area_entered" from="Tower" to="." method="_on_turbine_entered"]
