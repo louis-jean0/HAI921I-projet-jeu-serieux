@@ -47,6 +47,7 @@ func _process(delta: float) -> void:
 		self.visible = not sceneVisible
 		get_tree().get_root().get_node("Main/ItemsPanel").visible = not sceneVisible
 		get_tree().get_root().get_node("Main/ResourcesUI").visible = not sceneVisible
+		get_tree().get_root().get_node("Main/StatsUI").visible = not sceneVisible
 		defenseas_crush_instance.visible = sceneVisible
 		sceneVisible = not sceneVisible
 		

@@ -28,14 +28,14 @@ offset_bottom = 1028.0
 process_mode = 3
 modulate = Color(0.192425, 0.833715, 0.46427, 1)
 layout_mode = 0
+offset_left = 1.0
 offset_top = 800.0
 offset_right = 295.0
-offset_bottom = 912.0
+offset_bottom = 913.0
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_kwfu5")
 theme_override_font_sizes/font_size = 50
-text = "Options
-"
+text = "OPTIONS"
 
 [node name="Pause" type="Button" parent="Panel"]
 layout_mode = 1
@@ -62,14 +62,13 @@ process_mode = 3
 modulate = Color(0.192425, 0.833715, 0.46427, 1)
 layout_mode = 0
 offset_left = 1.0
-offset_top = 909.0
+offset_top = 912.0
 offset_right = 295.0
-offset_bottom = 1021.0
+offset_bottom = 1025.0
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_kwfu5")
 theme_override_font_sizes/font_size = 50
-text = "Menu
-"
+text = "MENU"
 
 [node name="Resume" type="Button" parent="Panel"]
 process_mode = 2
@@ -96,6 +95,7 @@ expand_icon = true
 stream = ExtResource("4_gnjrs")
 volume_db = -18.621
 autoplay = true
+parameters/looping = true
 
 [node name="BoxOptions" type="VBoxContainer" parent="."]
 visible = false
@@ -127,7 +127,9 @@ theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("2_kwfu5")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oj37d")
-text = "Volume Global"
+
+text = "VOLUME GLOBAL"
+
 
 [node name="Volume" type="HSlider" parent="BoxOptions/Label"]
 process_mode = 3
@@ -150,8 +152,7 @@ layout_mode = 2
 focus_neighbor_bottom = NodePath("../LancerPartie")
 theme = ExtResource("5_attx7")
 theme_override_constants/outline_size = 10
-text = "Quitter
-"
+text = "QUITTER"
 
 [node name="BoxOptions2" type="VBoxContainer" parent="."]
 process_mode = 3

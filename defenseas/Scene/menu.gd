@@ -13,7 +13,10 @@ func _process(delta: float) -> void:
 
 func _on_lancer_partie_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scene/main.tscn")
-
+	
+func _on_comment_jouer_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scene/CommentJouer.tscn")
+	
 func _on_options_pressed() -> void:
 	var menu = $BoxMenu
 	menu.visible = !menu.visible

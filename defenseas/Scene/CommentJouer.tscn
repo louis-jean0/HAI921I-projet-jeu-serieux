@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://b647ta2175md1"]
+
+[ext_resource type="Texture2D" uid="uid://ow5jxp0qfwy4" path="res://miscellaneous/Background.png" id="1_da54g"]
+[ext_resource type="Script" path="res://Scene/CommentJouer.gd" id="1_ia6yu"]
+[ext_resource type="Theme" uid="uid://b1qwddp378jor" path="res://Font/themeVBox.tres" id="2_534sd"]
+[ext_resource type="FontFile" uid="uid://bdr3e7xl18ad4" path="res://Font/HomeVideo-BLG6G.ttf" id="3_8cscq"]
+
+[sub_resource type="Theme" id="Theme_2oppc"]
+default_font = ExtResource("3_8cscq")
+default_font_size = 18
+
+[node name="CommentJouer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ia6yu")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(750, 519)
+scale = Vector2(0.972222, 0.963889)
+texture = ExtResource("1_da54g")
+
+[node name="Panel" type="Panel" parent="Background"]
+offset_left = -441.257
+offset_top = -423.285
+offset_right = 453.743
+offset_bottom = 351.715
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/Panel"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 887.0
+offset_bottom = 748.0
+theme = SubResource("Theme_2oppc")
+theme_override_font_sizes/normal_font_size = 1
+bbcode_enabled = true
+text = "[center][b]Le but du jeu est d'empêcher les déchets d'arriver dans l'océan. Pour cela, vous disposez de plusieurs outils.
+
+- Les tourelles : récoltent les déchets, ne peuvent être placées que sur le sol.
+
+- Les turbines : améliorent les tourelles, ne peuvent être placées que dans l'eau.
+
+	- Turbines bleues : augmentent les dégâts des tourelles qui aperçoivent la turbine dans leur portée.
+
+	- Turbines vertes : augmentent la cadence de tir des tourelles qui aperçoivent la turbine dans leur portées.
+
+- Les filets : récoltent 10 déchets puis sont relevés, ne peuvent être placés que dans l'eau.
+
+- Le bateau : en appuyant sur entrée, on change de scène et on contrôle un bateau, avec lequel on peut retirer les déchets déjà passés en alignant les mêmes déchets au minimum par 3 de manière horizontale ou verticale.s
+
+Tous ces outils se trouvent dans le panel de droite.
+Lorsque l'on prend un objet, les cases où il peut être posé sont surlignées en vert.
+Ces objets sont achetables avec de l'argent. De base, vous disposez de 100 d'argent.
+
+Ramasser des déchets permet d'obtenir du plastique. Ce plastique peut être transformé en argent, en cliquant sur l'icône de recyclage, en haut à droite aux côtés de l'indicateur de plastique et d'argent. Il est à savoir que plus on recycle de plastique d'un coup, plus cela rapporte d'argent. Par exemple, 10 plastiques donne 10 d'argent, 100 plastiques 110 d'argent, 200 plastiques 220 d'argent, ... 
+
+Au centre nous retrouvons la carte où l'action va se dérouler : les déchets sont entrainés par la rivières, à vous d'utiliser à bon escient les ressources disponibles pour récupérer le plus de plastique possible. Il y a 3 vagues, et les déchets sont de plus en plus nombreux, rapides et résistants.
+
+La barre de vie tout en haut indique si vous êtes est proches de la défaite, si vous laissez passer trop de déchets alors vous perdrez. Si vous réussissez à survivre à toutes les vagues, vous gagnez !"
+
+[node name="FermerMenu" type="Button" parent="Background/Panel"]
+modulate = Color(0.0196078, 0.772549, 1, 1)
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 0
+offset_left = 340.457
+offset_top = 817.522
+offset_right = 529.457
+offset_bottom = 893.522
+focus_neighbor_bottom = NodePath("../LancerPartie")
+theme = ExtResource("2_534sd")
+theme_override_constants/outline_size = 10
+text = "QUITTER"
+
+[connection signal="pressed" from="Background/Panel/FermerMenu" to="." method="_on_fermer_menu_pressed"]

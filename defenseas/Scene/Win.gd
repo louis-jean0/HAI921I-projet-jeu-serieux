@@ -36,5 +36,6 @@ func display_moral() -> void:
 	morale.bbcode_text = "[center][b][i]" + selected_phrase + "[/i][/b][/center]"
 
 func _on_rejouer_pressed() -> void:
+	get_tree().paused = false
 	var menu_scene = preload("res://Scene/menu.tscn")
 	get_tree().change_scene_to_packed(menu_scene)
