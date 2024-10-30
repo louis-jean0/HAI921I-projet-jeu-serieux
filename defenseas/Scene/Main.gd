@@ -41,6 +41,13 @@ func _ready() -> void:
 		healthSpriteGrid.append(new_sprite)
 		self.add_child(new_sprite)
 
+# Retourne sur la scène des tours au moment du game over
+func returnToTower():
+	self.visible = true
+	get_tree().get_root().get_node("Main/ItemsPanel").visible = true
+	get_tree().get_root().get_node("Main/ResourcesUI").visible = true
+	defenseas_crush_instance.visible = false
+	
 func _process(delta: float) -> void:
 	wasteGrid = defenseas_crush_instance.getWasteGrid()
 	for i in range(wasteGrid.size()):

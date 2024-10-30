@@ -148,7 +148,7 @@ parameters/looping = true
 
 [connection signal="value_changed" from="BoxOptions/Label/Volume" to="." method="_on_volume_value_changed"]
 [connection signal="pressed" from="BoxOptions/FermerMenu" to="." method="_on_fermer_menu_pressed"]
-[connection signal="pressed" from="BoxMenu/LancerPartie" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="BoxMenu/LancerPartie" to="." method="_on_lancer_partie_pressed"]
+[connection signal="pressed" from="BoxMenu/LancerPartie" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="BoxMenu/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="BoxMenu/Fermer" to="." method="_on_fermer_pressed"]
