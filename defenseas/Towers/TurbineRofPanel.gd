@@ -38,6 +38,7 @@ func _on_gui_input(event):
 			path.add_child(tempTurbine)
 			tempTurbine.global_position = event.global_position
 			resources_manager.remove_money(turbine_rof_value)
+			resources_manager.add_towers()
 			is_holding_turbine = false
 			show_influence_areas(false)
 	else:

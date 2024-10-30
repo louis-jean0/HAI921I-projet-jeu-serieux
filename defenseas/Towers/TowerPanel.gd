@@ -34,6 +34,7 @@ func _on_gui_input(event):
 			tempTower.global_position = event.global_position
 			tempTower.get_node("Area").hide()
 			resources_manager.remove_money(tower_value)
+			resources_manager.add_towers()
 		else : 
 			get_child(1).queue_free()
 	else:
