@@ -45,13 +45,10 @@ func _on_menu_principal_pressed() -> void:
 	
 	
 	
-
-
 func _on_volume_value_changed(value: float) -> void:
 	var volume_db = linear_to_db(value / 10.0)  # Convertit une valeur linéaire en dB
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume_db)
 	Global.sound=value
-
 
 
 func _on_check_box_pressed() -> void:

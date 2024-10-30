@@ -154,6 +154,7 @@ text = "Quitter
 "
 
 [node name="BoxOptions2" type="VBoxContainer" parent="."]
+process_mode = 3
 visible = false
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 1
@@ -186,6 +187,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_oj37d")
 text = "Son des Tours"
 
 [node name="CheckBox" type="CheckBox" parent="BoxOptions2/Label"]
+process_mode = 3
 layout_mode = 0
 offset_left = 177.0
 offset_top = 78.0
