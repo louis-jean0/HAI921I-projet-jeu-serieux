@@ -60,10 +60,12 @@ animations = [{
 }]
 
 [node name="World" type="Node2D"]
+scale = Vector2(0.685, 0.685)
 script = SubResource("GDScript_o1lg7")
 
 [node name="background" type="TextureRect" parent="."]
-offset_right = 1687.0
+offset_left = 239.416
+offset_right = 1926.42
 offset_bottom = 1500.0
 texture = ExtResource("1_xwpu7")
 

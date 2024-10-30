@@ -1,10 +1,10 @@
 extends GridContainer
 
 # Taille de la grille : rows x columns
-@export var grid_size = Vector2i(5, 10)
+@export var grid_size = Vector2i(4, 12)
 @export var delay_between_spawn = 0.01 # Pour les tests, ensuite les seront tomberont dans la mer depuis l'autre phase du jeu
 @export var cell_size = Vector2i(128, 128)
-@export var gridPosition = Vector2(180,754)
+@export var gridPosition = Vector2(360,754)
 @export var tailleSequenceRecyclage = 3
 
 var indWaste

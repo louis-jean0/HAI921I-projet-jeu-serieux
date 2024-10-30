@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var speed = 8
+@export var speed = 500
 var boat
 var pince
 var cosCount = 0
@@ -12,9 +12,9 @@ var scalePince
 var holdingWaste # Instance de Waste portée par la pince
 var isHoldingWaste = false
 var fallingWaste = []
-var fallingSpeed = 5
+var fallingSpeed = 350
 var window_size
-var pinceSpeed = 5
+var pinceSpeed = 350
 var yLimit = 400
 var hasTouchedWaste = false
 
@@ -66,7 +66,7 @@ func _process(delta):
 		velocity.x = -1
 	if Input.is_action_just_pressed("grabAction"):
 		pince.animation = "closeGrap"
-		var typeHold = wasteGrid.checkAt(true, boat.position.x + (grabSpriteSize.x * scalePince.x)/2 - 30, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scalePince.y + 15)
+		var typeHold = wasteGrid.checkAt(true, boat.position.x + (grabSpriteSize.x * scalePince.x)/2 - 30, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scalePince.y + 30)
 		if typeHold != -1:
 			isHoldingWaste = true
 			holdingWaste = Waste.new()
@@ -92,13 +92,13 @@ func _process(delta):
 		if pinceY < yLimit:
 			if wasteGrid.checkAt(false, boat.position.x + (grabSpriteSize.x * scalePince.x)/2 - 30, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scalePince.y) != -2:
 				if not hasTouchedWaste:
-					pinceY += pinceSpeed
+					pinceY += pinceSpeed * delta
 			else:
 				hasTouchedWaste = true
-				pinceY -= pinceSpeed
+				pinceY -= pinceSpeed * delta
 		else:
 			if wasteGrid.checkAt(false, boat.position.x + (grabSpriteSize.x * scalePince.x)/2 - 30, boat.position.y + pince.position.y*2 + grabSpriteSize.y*scalePince.y) == -2:
-				pinceY -= pinceSpeed
+				pinceY -= pinceSpeed * delta
 			else:
 				pinceY = yLimit
 	else:
@@ -117,7 +117,7 @@ func _process(delta):
 	for i in range(fallingWaste.size()):
 		# Si besoin de vérifier que fallingWaste[i] != null, faire --> if fallingWaste[i]
 		var w = fallingWaste[i]
-		w.sprite.position.y += fallingSpeed
+		w.sprite.position.y += fallingSpeed * delta
 		if w.sprite.position.y > wasteGrid.gridPosition.y: # Ca ne sert à rien d'appeler check_if_empty au dela de cette hauteur
 			if wasteGrid.check_if_empty(w.sprite.position, w.type):
 				deleteSprite2D(w)
@@ -129,24 +129,20 @@ func _process(delta):
 				break # On est obligé de stopper la boucle for car les indices des éléments changent à cause du remove_at
 		
 		# Le déchet tombe dans le vide
-		if w.sprite.position.y > window_size.y + 128:
+		if w.sprite.position.y > window_size.y + 512:
 			deleteSprite2D(w)
 			fallingWaste.remove_at(i)
 			break # On est obligé de stopper la boucle for car les indices des éléments changent à cause du remove_at
 		
 	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+		velocity = velocity.normalized() * speed * delta
 		if velocity.x > 0:
-			if boat.position.x < window_size.x + boatSpriteSize.x/2 + 10:
+			if boat.position.x < 190 + window_size.x + boatSpriteSize.x/2 :
 				boat.position += velocity
 				boat.animation = "goRight"
-			else :
-				boat.position.x = -boatSpriteSize.x/2
 		else:
-			if boat.position.x > -boatSpriteSize.x/2 - 10:
+			if boat.position.x >  227 + boatSpriteSize.x/2 :
 				boat.position += velocity
 				boat.animation = "goLeft"
-			else :
-				boat.position.x = window_size.x + boatSpriteSize.x/2
 	
 	queue_redraw()
