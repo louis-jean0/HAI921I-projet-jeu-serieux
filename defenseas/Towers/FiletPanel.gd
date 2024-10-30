@@ -32,7 +32,7 @@ func _on_gui_input(event):
 			tempFilet.global_position = event.global_position
 			tempFilet.get_node("Area").hide()
 			resources_manager.remove_money(filet_value)
-			resources_manager.add_towers()
+			resources_manager.add_filets()
 		else : 
 			get_child(1).queue_free()
 	else:

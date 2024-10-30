@@ -2,10 +2,18 @@ extends Node2D
 
 var plastic = 0
 var plastic_label: Label
-var money = 1000
+var money = 200
 var money_label: Label
 var towers = 0
 var towers_label: Label
+var turbines = 0
+var turbines_label: Label
+var filets = 0
+var filets_label: Label
+var nb_ennemis_killed = 0
+var nb_ennemis_killed_label: Label
+var nb_ennemis_passed = 0
+var nb_ennemis_passed_label: Label
 var qqt = 0.
 var qqt_label: Label
 var bank = 0
@@ -15,12 +23,20 @@ var bank_label: Label
 func _ready() -> void:
 	plastic_label = get_node("../ResourcesUI").get_child(0)
 	money_label = get_node("../ResourcesUI").get_child(1)
-	towers_label = get_node("../StatsUI").get_child(0)
-	qqt_label = get_node("../StatsUI").get_child(1)
-	bank_label = get_node("../StatsUI").get_child(2)
+	towers_label = get_node("../StatsUI").get_child(0).get_child(0)
+	turbines_label = get_node("../StatsUI").get_child(1).get_child(0)
+	filets_label = get_node("../StatsUI").get_child(2).get_child(0)
+	nb_ennemis_killed_label = get_node("../StatsUI").get_child(3).get_child(0)
+	nb_ennemis_passed_label = get_node("../StatsUI").get_child(4).get_child(0)
+	qqt_label = get_node("../StatsUI").get_child(5).get_child(0)
+	bank_label = get_node("../StatsUI").get_child(6).get_child(0)
 	update_money_label()
 	update_plastic_label()
 	update_towers_label()
+	update_turbines_label()
+	update_filets_label()
+	update_ennemis_killed_label()
+	update_ennemis_passed_label()
 	update_qqt_label()
 	update_bank_label()
 
@@ -60,8 +76,6 @@ func recycle_plastic() -> void:
 		add_bank(plastic*1.6)
 		plastic = 0	
 	
-	
-	
 	update_plastic_label()
 	update_money_label()
 
@@ -82,8 +96,37 @@ func add_towers() -> void:
 func update_towers_label() -> void:
 	towers_label.text = str(towers)
 	
+
+func add_turbines() -> void:
+	turbines += 1
+	update_turbines_label()
+	
+func update_turbines_label() -> void:
+	turbines_label.text = str(turbines)
+	
+func add_filets() -> void:
+	filets += 1
+	update_filets_label()
+	
+func update_filets_label() -> void:
+	filets_label.text = str(filets)
+	
+func add_enemy_killed() -> void:
+	nb_ennemis_killed += 1
+	update_ennemis_killed_label()
+	
+func update_ennemis_killed_label() -> void:
+	nb_ennemis_killed_label.text = str(nb_ennemis_killed)
+	
+func add_enemy_passed() -> void:
+	nb_ennemis_passed += 1
+	update_ennemis_passed_label()
+	
+func update_ennemis_passed_label() -> void:
+	nb_ennemis_passed_label.text = str(nb_ennemis_passed)
+	
 func add_qqt() -> void:
-	qqt+= 0.1
+	qqt += 0.1
 	update_qqt_label()
 	
 func update_qqt_label() -> void:

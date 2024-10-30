@@ -1,15 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmkudhku3du1b"]
+[gd_scene load_steps=13 format=3 uid="uid://dmkudhku3du1b"]
 
 [ext_resource type="PackedScene" uid="uid://qr3rmrbnfx8t" path="res://Towers/TowerPanel.tscn" id="1_jv2dt"]
 [ext_resource type="Texture2D" uid="uid://mrc1cqfcm2rg" path="res://miscellaneous/bill.png" id="2_4oet0"]
 [ext_resource type="PackedScene" uid="uid://pjhvqo4mkduy" path="res://Towers/TurbineRofPanel.tscn" id="2_5k6mt"]
 [ext_resource type="PackedScene" uid="uid://cbwvyn1vbcvg6" path="res://Towers/TurbineDmgPanel.tscn" id="3_g2tvo"]
 [ext_resource type="PackedScene" uid="uid://cvmo3r5p4owcr" path="res://Towers/FiletPanel.tscn" id="4_pi1it"]
+[ext_resource type="Texture2D" uid="uid://djnp8jydnq115" path="res://miscellaneous/enter.png" id="5_4e0de"]
+[ext_resource type="FontFile" uid="uid://bdr3e7xl18ad4" path="res://Font/HomeVideo-BLG6G.ttf" id="5_wh4im"]
+
+[sub_resource type="Theme" id="Theme_0mfrb"]
+default_font = ExtResource("5_wh4im")
+default_font_size = 0
+
+[sub_resource type="Theme" id="Theme_juxby"]
+default_font = ExtResource("5_wh4im")
+
+[sub_resource type="Theme" id="Theme_0jgoi"]
+default_font = ExtResource("5_wh4im")
+
+[sub_resource type="Theme" id="Theme_a5fi3"]
+default_font = ExtResource("5_wh4im")
+default_font_size = 12
+
+[sub_resource type="Theme" id="Theme_wujsh"]
+default_font = ExtResource("5_wh4im")
 
 [node name="UI" type="CanvasLayer"]
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 1295.0
+offset_left = 1312.0
 offset_right = 1502.0
 offset_bottom = 1024.0
 
@@ -18,7 +37,7 @@ layout_mode = 0
 offset_left = 5.0
 offset_top = 213.0
 offset_right = 133.0
-offset_bottom = 755.0
+offset_bottom = 853.0
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 
@@ -35,81 +54,109 @@ layout_mode = 2
 [node name="FiletPanel" parent="Panel/FlowContainer" instance=ExtResource("4_pi1it")]
 layout_mode = 2
 
+[node name="EnterPanel" type="Panel" parent="Panel/FlowContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/FlowContainer/EnterPanel"]
+position = Vector2(60, 63)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_4e0de")
+
 [node name="PrixTour" type="Label" parent="Panel"]
 layout_mode = 2
-offset_left = 134.0
-offset_top = 261.0
-offset_right = 153.0
+offset_left = 133.0
+offset_top = 272.0
+offset_right = 148.0
 offset_bottom = 284.0
 scale = Vector2(1.5, 1.5)
-text = "50"
+theme = SubResource("Theme_0mfrb")
+theme_override_font_sizes/font_size = 12
+text = "100
+"
 
 [node name="TextureRect" type="TextureRect" parent="Panel/PrixTour"]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 3.0
-offset_right = 39.0
-offset_bottom = 23.0
+offset_left = 20.6667
+offset_top = -4.0
+offset_right = 39.6667
+offset_bottom = 16.0
 texture = ExtResource("2_4oet0")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="PrixTurbineDmg" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 133.0
-offset_top = 399.0
-offset_right = 161.0
-offset_bottom = 422.0
+offset_left = 131.0
+offset_top = 405.0
+offset_right = 160.0
+offset_bottom = 420.0
 scale = Vector2(1.5, 1.5)
+theme = SubResource("Theme_juxby")
+theme_override_font_sizes/font_size = 12
 text = "100
 "
 
 [node name="TextureRect" type="TextureRect" parent="Panel/PrixTurbineDmg"]
 layout_mode = 0
-offset_left = 28.6667
-offset_top = 2.66667
-offset_right = 47.6667
-offset_bottom = 22.6667
+offset_left = 20.6667
+offset_top = -3.33333
+offset_right = 39.6667
+offset_bottom = 16.6667
 texture = ExtResource("2_4oet0")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="PrixTurbineRof" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 134.0
-offset_top = 534.0
-offset_right = 162.0
-offset_bottom = 557.0
+offset_left = 132.0
+offset_top = 544.0
+offset_right = 154.0
+offset_bottom = 556.0
 scale = Vector2(1.5, 1.5)
+theme = SubResource("Theme_0jgoi")
+theme_override_font_sizes/font_size = 12
 text = "100
 "
 
 [node name="TextureRect" type="TextureRect" parent="Panel/PrixTurbineRof"]
 layout_mode = 0
-offset_left = 28.6667
-offset_top = 2.66667
-offset_right = 47.6667
-offset_bottom = 22.6667
+offset_left = 21.3334
+offset_top = -3.33333
+offset_right = 40.3334
+offset_bottom = 16.6667
 texture = ExtResource("2_4oet0")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="PrixFilet" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 135.0
-offset_top = 675.0
-offset_right = 163.0
-offset_bottom = 698.0
+offset_left = 133.0
+offset_top = 682.0
+offset_right = 155.0
+offset_bottom = 694.0
 scale = Vector2(1.5, 1.5)
+theme = SubResource("Theme_a5fi3")
 text = "200
 "
 
 [node name="TextureRect" type="TextureRect" parent="Panel/PrixFilet"]
 layout_mode = 0
-offset_left = 26.6667
-offset_top = 2.66667
-offset_right = 45.6667
-offset_bottom = 22.6667
+offset_left = 21.3334
+offset_top = -3.33333
+offset_right = 40.3334
+offset_bottom = 16.6667
 texture = ExtResource("2_4oet0")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 822.0
+offset_right = 192.0
+offset_bottom = 837.0
+theme = SubResource("Theme_wujsh")
+theme_override_font_sizes/bold_font_size = 15
+bbcode_enabled = true
+text = "[center][b]Grille"
