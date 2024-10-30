@@ -96,6 +96,7 @@ volume_db = -18.621
 autoplay = true
 
 [node name="BoxOptions" type="VBoxContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 1
 anchors_preset = 14
