@@ -1,6 +1,6 @@
 extends Area2D
 
-const ENEMY_LIMIT = 1
+const ENEMY_LIMIT = 100
 var enemy_count = 0
 
 func _ready() -> void:

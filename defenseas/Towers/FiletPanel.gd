@@ -7,6 +7,7 @@ var filet_value = 200
 const TILE_TOWER_ALLOWED = 0  # ID du tile de placement autorisé
 
 func _on_gui_input(event):
+	valid_tilemap.z_index=0
 	if(resources_manager.money < filet_value):
 		return
 	var tempFilet = filet.instantiate()

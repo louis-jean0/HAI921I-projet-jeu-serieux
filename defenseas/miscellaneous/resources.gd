@@ -2,7 +2,7 @@ extends Node2D
 
 var plastic = 0
 var plastic_label: Label
-var money = 100
+var money = 1000
 var money_label: Label
 
 # Called when the node enters the scene tree for the first time.
