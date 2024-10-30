@@ -18,14 +18,6 @@ func _ready():
 		var w = Waste.new()
 		listOfWaste.append(w)
 		self.add_child(w.sprite) # Ajoute le sprite à la grille
-	
-	var timer = Timer.new()
-	timer.wait_time = delay_between_spawn
-	# Le timer recommence quand il termine
-	timer.one_shot = false  
-	timer.timeout.connect(spawn_new_object)
-	add_child(timer)
-	timer.start()
 		
 func clear_grid():
 	for child in self.get_children():
@@ -64,6 +56,7 @@ func check_if_empty(positionWaste, typeWaste):
 		if j == 0 or listOfWaste[(j-1)*grid_size.y + i].type != -1: # Si il y a bien un déchet en dessous ou qu'on est au fond
 			if listOfWaste[j*grid_size.y + i].type == -1 : # S'il n'y a pas de déchet à cet emplacement
 				var newWaste = listOfWaste[j*grid_size.y + i]
+				self.remove_child(newWaste.sprite)
 				newWaste.type = typeWaste
 				newWaste.sprite.texture = Waste.texture_paths[typeWaste]
 				newWaste.sprite.position = Vector2i(i * cell_size.x, 600 - (j * cell_size.y))

@@ -1,5 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bxrnl64e6e78t"]
 
+[ext_resource type="Script" path="res://Defenseas_Crush/main.gd" id="1_fpbp8"]
 [ext_resource type="Texture2D" uid="uid://b584etxwfs78e" path="res://Defenseas_Crush/background.png" id="1_xwpu7"]
 [ext_resource type="Script" path="res://Defenseas_Crush/waste_grid.gd" id="3_6aklu"]
 [ext_resource type="Script" path="res://Defenseas_Crush/player_boat.gd" id="3_c8ab2"]
@@ -7,19 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://djbo6x15ahl7k" path="res://Defenseas_Crush/boatRight.png" id="5_q1ubw"]
 [ext_resource type="Texture2D" uid="uid://pnn1efqwspm" path="res://Defenseas_Crush/grab.png" id="6_aood4"]
 [ext_resource type="Texture2D" uid="uid://c0ptj1qofsy45" path="res://Defenseas_Crush/open.png" id="7_1t640"]
-
-[sub_resource type="GDScript" id="GDScript_o1lg7"]
-script/source = "extends Node2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	position = Vector2i(0,0)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b311d"]
 animations = [{
@@ -61,7 +49,7 @@ animations = [{
 
 [node name="World" type="Node2D"]
 scale = Vector2(0.685, 0.685)
-script = SubResource("GDScript_o1lg7")
+script = ExtResource("1_fpbp8")
 
 [node name="background" type="TextureRect" parent="."]
 offset_left = 239.416

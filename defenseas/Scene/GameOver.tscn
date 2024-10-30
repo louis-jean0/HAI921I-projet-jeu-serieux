@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://twder01bivgn"]
 
 [ext_resource type="Script" path="res://Scene/GameOver.gd" id="1_bfy5p"]
-[ext_resource type="Theme" uid="uid://b1qwddp378jor" path="res://themeVBox.tres" id="4_fmaxn"]
+[ext_resource type="Theme" uid="uid://b1qwddp378jor" path="res://Font/themeVBox.tres" id="4_fmaxn"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3

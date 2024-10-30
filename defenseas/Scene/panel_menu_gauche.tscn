@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c2arsn2efhb6q" path="res://miscellaneous/pause1.png" id="3_oloqp"]
 [ext_resource type="Texture2D" uid="uid://dm57vskivmpef" path="res://miscellaneous/pause2.png" id="4_6qdj8"]
 [ext_resource type="AudioStream" uid="uid://b1cp63wprvhhj" path="res://Sound/8bitBgMusic.mp3" id="4_gnjrs"]
-[ext_resource type="Theme" uid="uid://b1qwddp378jor" path="res://themeVBox.tres" id="5_attx7"]
+[ext_resource type="Theme" uid="uid://b1qwddp378jor" path="res://Font/themeVBox.tres" id="5_attx7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oj37d"]
 

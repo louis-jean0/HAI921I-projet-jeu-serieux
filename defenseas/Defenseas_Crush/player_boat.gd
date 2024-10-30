@@ -32,6 +32,10 @@ func getSizeOfSprite(sprite, sprite_name):
 	var getTexture = spriteFrames.get_frame_texture(sprite_name, frameIndex)
 	return getTexture.get_size()
 
+func addWasteInFalling(new_waste):
+	self.add_child(new_waste.sprite)
+	fallingWaste.append(new_waste)
+
 func _ready() -> void:
 	window_size = get_viewport_rect().size # Récupère les dimensions de la fenêtre
 	boat = self.get_child(0)
