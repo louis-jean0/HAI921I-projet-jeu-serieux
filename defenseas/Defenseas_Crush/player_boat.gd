@@ -59,9 +59,6 @@ func deleteSprite2D(wasteToDelete):
 	# wasteToDelete = null
 	
 func _process(delta):	
-	if Input.is_action_just_pressed("switchGame"):
-		get_tree().change_scene_to_file("res://Scene/main.tscn")
-		
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x = 1
