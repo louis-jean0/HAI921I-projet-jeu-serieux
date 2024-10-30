@@ -25,6 +25,7 @@ offset_right = 299.0
 offset_bottom = 1028.0
 
 [node name="Options" type="Button" parent="Panel"]
+process_mode = 3
 modulate = Color(0.192425, 0.833715, 0.46427, 1)
 layout_mode = 0
 offset_left = 1.0
@@ -57,6 +58,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="MenuPrincipal" type="Button" parent="Panel"]
+process_mode = 3
 modulate = Color(0.192425, 0.833715, 0.46427, 1)
 layout_mode = 0
 offset_left = 1.0
@@ -125,21 +127,25 @@ theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("2_kwfu5")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oj37d")
-text = "VOLUME"
+
+text = "VOLUME GLOBAL"
+
 
 [node name="Volume" type="HSlider" parent="BoxOptions/Label"]
+process_mode = 3
 modulate = Color(0.779277, 0.64299, 0.238795, 1)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
-offset_left = -109.0
-offset_top = 19.0
-offset_right = 38.0
-offset_bottom = 84.0
+offset_left = -29.5
+offset_top = 4.0
+offset_right = 117.5
+offset_bottom = 69.0
 scale = Vector2(3, 3)
 theme = SubResource("Theme_jg8dv")
 value = 20.0
 
 [node name="FermerMenu" type="Button" parent="BoxOptions"]
+process_mode = 3
 modulate = Color(0.0196078, 0.772549, 1, 1)
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -148,9 +154,53 @@ theme = ExtResource("5_attx7")
 theme_override_constants/outline_size = 10
 text = "QUITTER"
 
+[node name="BoxOptions2" type="VBoxContainer" parent="."]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 647.0
+offset_top = 270.0
+offset_right = 1016.0
+offset_bottom = 404.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+
+[node name="Label" type="Label" parent="BoxOptions2"]
+self_modulate = Color(0.0196078, 0.772549, 1, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_constants/line_spacing = 10
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("2_kwfu5")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_oj37d")
+text = "Son des Tours"
+
+[node name="CheckBox" type="CheckBox" parent="BoxOptions2/Label"]
+process_mode = 3
+layout_mode = 0
+offset_left = 177.0
+offset_top = 78.0
+offset_right = 205.0
+offset_bottom = 109.0
+scale = Vector2(2, 2)
+button_pressed = true
+
 [connection signal="pressed" from="Panel/Options" to="." method="_on_fermer_menu_pressed"]
 [connection signal="pressed" from="Panel/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="Panel/MenuPrincipal" to="." method="_on_menu_principal_pressed"]
 [connection signal="pressed" from="Panel/Resume" to="." method="_on_resume_pressed"]
 [connection signal="value_changed" from="BoxOptions/Label/Volume" to="." method="_on_volume_value_changed"]
 [connection signal="pressed" from="BoxOptions/FermerMenu" to="." method="_on_fermer_menu_pressed"]
+[connection signal="pressed" from="BoxOptions2/Label/CheckBox" to="." method="_on_check_box_pressed"]
