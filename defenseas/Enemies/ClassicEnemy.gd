@@ -7,10 +7,10 @@ func _init() -> void:
 	plastic_value = 5
 	health = 10
 	sprite_array = [
-		preload("res://Enemies/sprites/bidon.png"),
 		preload("res://Enemies/sprites/bidon2.png"),
 		preload("res://Enemies/sprites/biere.png"),
 		preload("res://Enemies/sprites/coca.png"),
+		preload("res://Enemies/sprites/bidon.png"),
 		preload("res://Enemies/sprites/plastic_bottle.png"),
 		preload("res://Enemies/sprites/trash_bag.png"),
 		preload("res://Enemies/sprites/verre.png")
