@@ -27,7 +27,7 @@ func find_closest_target() -> Node2D:
 	var overlapping_bodies = $Tower.get_overlapping_bodies()
 	for body in overlapping_bodies:
 		if "Enemy" in body.name:
-			var distance = global_position.distance_to(body.global_position)
+			var distance = body.get_parent().get_progress()
 			if distance > farthest_distance:
 				farthest_distance = distance
 				farthest_target = body.get_parent()

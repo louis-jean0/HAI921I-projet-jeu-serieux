@@ -1,10 +1,10 @@
 extends EnemyBase
 
-class_name ClassicEnemy
+class_name FastEnemy
 
 func _init() -> void:
-	speed = 50
-	plastic_value = 5
+	speed = 100
+	plastic_value = 10
 	health = 10
 	sprite_array = [
 		preload("res://Enemies/sprites/bidon.png"),

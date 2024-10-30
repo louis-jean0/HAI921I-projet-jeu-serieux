@@ -19,7 +19,7 @@ var morale_phrases = [
 	"Environ 50 % des récifs coralliens dans le monde ont été perdus au cours des 30 dernières années.",
 	"Plus de 1 million d'espèces marines sont actuellement menacées d'extinction.",
 	"Il existe plus de 400 zones mortes dans les océans, des régions où le niveau d'oxygène est trop bas pour soutenir la vie marine.",
-	"La biodiversité marine a diminué de 39 % en moyenne depuis 1970"
+	"La biodiversité marine a diminué de 39 % en moyenne depuis 1970."
 ]
 
 func display_end_phrases() -> void:
