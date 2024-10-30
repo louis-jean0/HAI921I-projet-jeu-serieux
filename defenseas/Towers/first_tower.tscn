@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://5npqk2ej5rij"]
+[gd_scene load_steps=7 format=3 uid="uid://5npqk2ej5rij"]
 
 [ext_resource type="Script" path="res://Towers/FirstTower.gd" id="1_swl3s"]
 [ext_resource type="Texture2D" uid="uid://cyx1s3vuf1aue" path="res://Towers/sprites/tower.png" id="2_fi5mu"]
+[ext_resource type="AudioStream" uid="uid://djjqat35mtupm" path="res://Sound/ShootSound.mp3" id="3_rl6yc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_saje1"]
 size = Vector2(550, 750)
@@ -49,6 +50,10 @@ offset_top = -224.0
 offset_right = 223.0
 offset_bottom = 224.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ntyfu")
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_rl6yc")
+max_polyphony = 30
 
 [connection signal="area_entered" from="Tower" to="." method="_on_turbine_entered"]
 [connection signal="area_exited" from="Tower" to="." method="_on_turbine_exited"]

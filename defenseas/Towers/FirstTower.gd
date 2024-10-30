@@ -60,6 +60,8 @@ func _on_turbine_exited(body: Node) -> void:
 
 func _on_shoot_timer_timeout() -> void:
 	if currTarget != null and is_instance_valid(currTarget):
+		$ShootSound.play()
+		print($ShootSound.volume_db)
 		spawn_pincer(currTarget)
 
 func spawn_pincer(target: Node2D) -> void:
@@ -68,6 +70,7 @@ func spawn_pincer(target: Node2D) -> void:
 	tempPince.pinceDamage = pinceDamage
 	tempPince.global_position = $Aim.global_position
 	get_node("PinceContainer").call_deferred("add_child", tempPince)
+	
 
 func clear_pincers() -> void:
 	for pincer in get_node("PinceContainer").get_children():

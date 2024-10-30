@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://b1qwddp378jor"]
 
-[ext_resource type="FontFile" uid="uid://bseuw8p8p8v8o" path="res://Fontspring-DEMO-ccoverbyteoff-regular.otf" id="1_ddesi"]
+[ext_resource type="FontFile" uid="uid://sqg27ix3v4mi" path="res://Demo-Overbyte/Demo_Fonts/Fontspring-DEMO-ccoverbyteoff-regular.otf" id="1_t12x3"]
 
 [resource]
-default_font = ExtResource("1_ddesi")
+default_font = ExtResource("1_t12x3")
 default_font_size = 56
