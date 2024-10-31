@@ -38,6 +38,11 @@ func update_progress_bar() -> void:
 func check_loss_condition() -> void:
 	if enemy_count >= ENEMY_LIMIT:
 		# Affiche l'écran de défaite
+		get_tree().get_root().get_node("World").visible = false
+		get_tree().get_root().get_node("Main").visible = true
+		get_tree().get_root().get_node("Main/ItemsPanel").visible = true
+		get_tree().get_root().get_node("Main/ResourcesUI").visible = true
+		get_tree().get_root().get_node("Main/StatsUI").visible = true
 		var game_over_screen = get_tree().get_current_scene().get_node("GameOver")
 		game_over_screen.show()
 		get_tree().paused = true

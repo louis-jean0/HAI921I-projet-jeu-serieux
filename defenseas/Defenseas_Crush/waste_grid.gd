@@ -9,14 +9,6 @@ extends GridContainer
 
 var indWaste
 var listOfWaste = []
-
-func hasReachedLimit():
-	var count = 0;
-	for i in range(listOfWaste.size()):
-		if listOfWaste[i].type != -1:
-			count += 1
-	print("count = ",count)
-	return count >= 35
 	
 func _ready():
 	clear_grid()
@@ -64,7 +56,8 @@ func check_if_empty(positionWaste, typeWaste):
 		if j == 0 or listOfWaste[(j-1)*grid_size.y + i].type != -1: # Si il y a bien un déchet en dessous ou qu'on est au fond
 			if listOfWaste[j*grid_size.y + i].type == -1 : # S'il n'y a pas de déchet à cet emplacement
 				var newWaste = listOfWaste[j*grid_size.y + i]
-				self.remove_child(newWaste.sprite)
+				if newWaste.sprite.get_parent() == self:
+					self.remove_child(newWaste.sprite)
 				newWaste.type = typeWaste
 				newWaste.sprite.texture = Waste.texture_paths[typeWaste]
 				newWaste.sprite.position = Vector2i(i * cell_size.x, 600 - (j * cell_size.y))

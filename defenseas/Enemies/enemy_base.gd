@@ -24,7 +24,7 @@ func _process(delta):
 	get_parent().set_progress(get_parent().get_progress() + speed * delta)
 	if get_parent().get_progress_ratio() == 1:
 		defenseas_crush_instance.waste_fall_in_sea(type_waste)
-		queue_free()
+		get_parent().queue_free()
 	if health <= 0:
 		handle_death()
 		
@@ -36,4 +36,4 @@ func handle_death() -> void:
 	resources_manager.add_plastic(plastic_value)
 	resources_manager.add_enemy_killed()
 	resources_manager.add_qqt()
-	queue_free()
+	get_parent().queue_free()

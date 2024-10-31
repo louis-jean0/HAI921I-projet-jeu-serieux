@@ -129,8 +129,6 @@ func _process(delta):
 		w.sprite.position.y += fallingSpeed * delta
 		if w.sprite.position.y > wasteGrid.gridPosition.y: # Ca ne sert à rien d'appeler check_if_empty au dela de cette hauteur
 			if wasteGrid.check_if_empty(w.sprite.position, w.type):
-				if wasteGrid.hasReachedLimit():
-					get_tree().get_root().get_node("Main").returnToTower();
 				deleteSprite2D(w)
 				fallingWaste.remove_at(i)
 				var newWasteFalling = wasteGrid.recycleWaste(w.sprite.position, w.type)

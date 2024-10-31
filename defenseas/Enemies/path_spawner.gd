@@ -22,10 +22,18 @@ var spawn_timers = []
 
 func _ready():
 	start_next_wave()
+	connect("enemy_died", Callable(self, "_on_enemy_died"))
+	
+func _process(delta: float) -> void:
+	pass
 
 func start_next_wave():
 	if current_wave_index >= wave_config.size():
-		print("Toutes les vagues ont été terminées !")
+		get_tree().get_root().get_node("World").visible = false
+		get_tree().get_root().get_node("Main").visible = true
+		get_tree().get_root().get_node("Main/ItemsPanel").visible = true
+		get_tree().get_root().get_node("Main/ResourcesUI").visible = true
+		get_tree().get_root().get_node("Main/StatsUI").visible = true
 		var win_scene = get_tree().get_current_scene().get_node("Win")
 		win_scene.show()
 		get_tree().paused = true
@@ -58,13 +66,11 @@ func start_next_wave():
 		spawn_timers.append(spawn_timer)
 
 func _on_spawn_timer_timeout(path_index):
-	# Vérifie que le nombre d’ennemis de la vague n’est pas dépassé
 	if enemies_spawned_in_wave >= current_wave.enemy_count:
-		stop_wave_timers()
-		current_wave_index += 1
-		await get_tree().create_timer(5.0).timeout
-		start_next_wave()
-		return
+			stop_wave_timers()
+			current_wave_index += 1
+			await get_tree().create_timer(20.0).timeout
+			start_next_wave()
 	
 	# Récupère le niveau et les chemins
 	var level = get_node("../LevelContainer").get_child(0)
@@ -93,7 +99,7 @@ func create_enemy_on_path(path: Path2D, enemy_type: String):
 				enemy.speed = 150
 				enemy.health = 20
 		path_follow.add_child(enemy)
-
+		
 func stop_wave_timers():
 	for timer in spawn_timers:
 		timer.stop()

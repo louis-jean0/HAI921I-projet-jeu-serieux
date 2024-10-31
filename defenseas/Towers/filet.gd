@@ -22,8 +22,6 @@ func _process(delta: float) -> void:
 		if cpt >= max_destroy_count:
 			queue_free()  # Supprime le filet lui-même
 
-
-
 func find_closest_target() -> Node2D:
 	var farthest_target: Node2D = null
 	var farthest_distance = -INF
